@@ -2,7 +2,7 @@
 
 [Русский](../ru/10-excel-to-matrix.md) · [Project home](../../README.md) · [To-dos](../../planning/phase-1.md)
 
-**Source:** user requirements, 2026-10-31. **Status:** scenario captured; actual files, reference outputs and acceptance rules have not been supplied. The goal is useful data processing through autonomous solution search. Existing prototype examples do not implement this scenario.
+**Source:** user requirements, 2026-10-31. **Status:** deferred application-layer scenario under [ADR-003](../../adr/003-bioengine-first.md); the [bioengine](11-bioengine-and-applications.md) is the current priority. The scenario is preserved; actual files and references have not been supplied. Receiving them does not block core construction. Existing prototype examples do not implement this scenario.
 
 ## Task
 
@@ -41,4 +41,4 @@ Current JSON v0 supports only scalar ports and limited operations; it does not y
 
 Obtain a verifiable transformation of actual files into the target matrix, including updates, and compare autonomous search against the initial solution under equal conditions. Record correctness, errors, search time/cost and checks on new files. This evaluates practical usefulness; scientific uniqueness is not a condition for accepting useful results.
 
-Next tasks: **P0-06, P1-09, P1-10, P1-11**. Concrete implementation needs actual input and reference output examples; updates also need at least one sequential scenario with expected state.
+Tasks **P0-06, P1-09, P1-10, P1-11** are deferred; the P1 tasks moved to [application phase A1](../../planning/applications.md) with IDs preserved. Actual input/output pairs and update sequences will be needed when this scenario resumes. Current core construction uses our own bounded test inputs.

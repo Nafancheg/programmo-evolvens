@@ -1,5 +1,7 @@
 # Genome and Heredity
 
+Current assembly priorities and autonomous composition boundaries are clarified in the [bioengine model](11-bioengine-and-applications.md) and [ADR-003](../../adr/003-bioengine-first.md). The Excel application is not a core dependency.
+
 [Русская версия](../ru/03-genome-and-heredity.md) · [Project home](../../README.md) · [ADR-001](../../adr/001-genetic-model.md)
 
 **Status — 2026-10-31:** agreed architectural direction. A [first prototype](09-first-prototype.md) provides working JSON v0 and a sequential executor; the final genome format remains undecided and the research experiment has not been executed. Composition from a small primitive set remains an untested hypothesis.

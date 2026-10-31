@@ -1,10 +1,14 @@
 # Фаза 2 — Клетки и устойчивость / Phase 2 — Cells and Resilience
 
-[Roadmap](../ROADMAP.md) · **Status:** planned
+[Roadmap](../ROADMAP.md) · **Status:** in_progress
+
+**RU:** Минимальный контракт клетки проектируется параллельно первому пищеварительному циклу. Процессная изоляция и сложные органы могут идти позже; клетку не подменяем названием узла графа.
+
+**EN:** Design the minimal cell contract alongside the first digestion cycle. Process isolation and complex organs may follow later; a cell is not a renamed graph node.
 
 | ID | To-do RU / EN | Status | Зависимость и результат / Dependency and evidence |
 | --- | --- | --- | --- |
-| P2-01 | Контракт клетки, жизненный цикл и здоровье / Cell contract, lifecycle and health | todo | P1-04; клетка не равна узлу / cell is distinct from a node |
+| P2-01 | Контракт клетки, жизненный цикл и здоровье / Cell contract, lifecycle and health | in_progress | [Модель RU](../docs/ru/11-bioengine-and-applications.md), [EN](../docs/en/11-bioengine-and-applications.md); точный контракт и реализация впереди / exact contract and implementation pending; нужно для P1-15/16 / needed by P1-15/16 |
 | P2-02 | Изоляция, квоты памяти и жёсткие тайм-ауты / Isolation, memory quotas and hard timeouts | todo | P2-01; границы процесса / process boundaries |
 | P2-03 | Телеметрия, происхождение событий, восстановление / Telemetry, provenance and recovery | todo | P2-01; реальные отказы / real failures |
 | P2-04 | Гомеостаз, карантин, регенерация и апоптоз / Homeostasis, quarantine, regeneration and apoptosis | todo | P2-02/03; E2 vs restart |

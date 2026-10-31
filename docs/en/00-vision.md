@@ -3,7 +3,9 @@
 [Русская версия](../ru/00-vision.md) · [Project home](../../README.md)
 
 ## Purpose
-Investigate whether a biologically inspired architecture improves real software task performance, resilience and adaptation compared with a conventional baseline.
+Build an autonomous bioengine that accepts, processes and assimilates information, retains usable data and develops processing methods through mechanism composition. The next deliverable is a working feeding/assimilation model without external AI agents. Application products belong to the next layer. [Complete model](11-bioengine-and-applications.md), [ADR-003](../../adr/003-bioengine-first.md).
+
+Comparison with conventional software checks practical usefulness. Proof of scientific uniqueness is not a prerequisite for building the system.
 
 ## Fundamental thesis
 An organism performs externally assigned tasks and develops within its existing generation. Structural reproduction occurs only when a validated capability gap cannot be resolved by learning or configuration.
@@ -18,4 +20,4 @@ This project does not claim consciousness, biological life, autonomous code synt
 - Verification protocol: immutable-for-a-trial acceptance criteria and rollback policy.
 
 ## Priorities
-Reproducibility, causal evidence, determinism of critical controls, auditability and explicit safety constraints.
+A working autonomous cycle, explicit contracts, reproducible checks, observable failures and costs, persistence and reuse of outcomes. Arbitrary code generation and universal file understanding are not claimed implemented capabilities.

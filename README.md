@@ -3,7 +3,15 @@
 **Biologically Inspired Evolutionary Software Organisms**  
 **Биологически ориентированные эволюционирующие программные организмы**
 
-**Status / Статус:** Concept & Research — 2026-10-31.
+**Status / Статус:** Engineering prototype; bioengine under construction / Инженерный прототип; биодвижок в разработке — 2026-10-31.
+
+## Текущее направление / Current Direction
+
+**RU:** Создаём автономный биодвижок: информация поступает на единую входящую шину, проходит разбор, проверку и усвоение, сохраняется и используется дальше. Движок должен самостоятельно подбирать совместимые композиции доступных операций без внешних ИИ-агентов и языковых моделей. Гены описывают сборку механизмов из примитивов; механизмы исполняются клетками, клетки объединяются в органы и организм. Нуклеотиды относятся к кодированию генома. Ближайший результат — первый рабочий цикл питания и усвоения. Excel-продукт и дашборд относятся к последующим задачам. Самостоятельный подбор и усвоение пока не реализованы.
+
+**EN:** Build an autonomous bioengine: information enters through one input bus, is parsed, validated, assimilated, persisted and reused. The engine must search compatible compositions of available operations without external AI agents or language models. Genes describe mechanisms assembled from primitives; cells execute mechanisms and form organs and the organism. Nucleotides belong to genome encoding. Next deliverable: a first working feeding/assimilation cycle. Excel products and dashboards are later tasks. Autonomous search and assimilation are not implemented yet.
+
+[Целостная модель RU](docs/ru/11-bioengine-and-applications.md) · [Complete model EN](docs/en/11-bioengine-and-applications.md) · [План ядра / Core plan](ROADMAP.md) · [Прикладная очередь / Application backlog](planning/applications.md)
 
 ## Первый прототип / First Prototype
 
@@ -49,6 +57,9 @@ Genesis may also evolve, subject to external competence validation. The primary 
 | Genesis Co-evolution / Коэволюция Genesis | [EN](docs/en/06-coevolution.md) | [RU](docs/ru/06-coevolution.md) |
 | Functional Singularity / Функциональная сингулярность | [EN](docs/en/07-functional-singularity.md) | [RU](docs/ru/07-functional-singularity.md) |
 | Research Methodology / Методика исследований | [EN](docs/en/08-research-methodology.md) | [RU](docs/ru/08-research-methodology.md) |
+| First Prototype / Первый прототип | [EN](docs/en/09-first-prototype.md) | [RU](docs/ru/09-first-prototype.md) |
+| Deferred Excel Scenario / Отложенный Excel-сценарий | [EN](docs/en/10-excel-to-matrix.md) | [RU](docs/ru/10-excel-to-matrix.md) |
+| Bioengine and Applications / Биодвижок и приложения | [EN](docs/en/11-bioengine-and-applications.md) | [RU](docs/ru/11-bioengine-and-applications.md) |
 
 ## Research / Исследования
 

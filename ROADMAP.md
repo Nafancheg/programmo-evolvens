@@ -1,20 +1,34 @@
 # Roadmap / Дорожная карта
 
-**Первый прикладной сценарий / First applied scenario:** [Excel → итоговая матрица (RU)](docs/ru/10-excel-to-matrix.md) · [Excel → target matrix (EN)](docs/en/10-excel-to-matrix.md). Проверка по входным/эталонным парам, включая актуализацию данных / Reference input/output pairs, including data updates. P0-06 и P1-09/10/11; реализация ожидает реальные примеры / implementation awaits actual examples.
+**Текущий приоритет / Current priority:** создать автономный биодвижок: приём информации → разбор → проверка → усвоение → память → использование, с самостоятельным подбором допустимых композиций / build an autonomous bioengine: intake → parsing → validation → assimilation → memory → use, with internal search over permitted compositions. [Модель RU](docs/ru/11-bioengine-and-applications.md) · [Model EN](docs/en/11-bioengine-and-applications.md) · [ADR-003](adr/003-bioengine-first.md).
+
+**Два слоя / Two layers:** ядро и прикладные продукты / core and application products. Для первой рабочей модели не нужны пользовательский Excel и дашборд; проверки проводим на небольших определённых наборах входов / user Excel files and a dashboard are not prerequisites for the first working model; use small defined input sets for checks. Внешние ИИ-агенты и языковые модели не требуются для работы ядра / external AI agents and language models are not required at core runtime.
+
+## Биодвижок: фазы / Bioengine Phases
 
 | Phase | RU | EN | Status | To-do |
 | --- | --- | --- | --- | --- |
-| 0 | Концепция, гипотезы и критерии доказательности | Charter, hypotheses and evidence criteria | In progress | [P0](planning/phase-0.md) |
-| 1 | Реальный исполнитель задач и контрольная группа | Real task executor and baseline | In progress | [P1](planning/phase-1.md) |
-| 2 | Клетки, телеметрия, отказоустойчивость | Cells, telemetry and resilience | Planned | [P2](planning/phase-2.md) |
+| 0 | Контракты и границы первой рабочей модели | Contracts and first-model boundaries | In progress | [P0](planning/phase-0.md) |
+| 1 | Биодвижок: питание, усвоение, композиция | Bioengine: feeding, assimilation, composition | In progress | [P1](planning/phase-1.md) |
+| 2 | Клетки, телеметрия, отказоустойчивость | Cells, telemetry and resilience | In progress | [P2](planning/phase-2.md) |
 | 3 | Память, обучение и контроль качества | Memory, learning and evaluation | Planned | [P3](planning/phase-3.md) |
 | 4 | Genesis: оценка, эволюционный запрос, допуск | Genesis: assessment and approval | Planned | [P4](planning/phase-4.md) |
 | 5 | Коэволюция Genesis и проверка новых поколений | Genesis co-evolution and generation testing | Planned | [P5](planning/phase-5.md) |
 | 6 | Веб-дашборд на реальных событиях | Dashboard backed by observed events | Planned | [P6](planning/phase-6.md) |
 
-**RU:** Переходы только после воспроизводимых испытаний. Python используется для первого исследовательского исполнителя; язык генома им не ограничивается. Первый прототип не завершает E0 и не подтверждает композиционность.
+**RU:** Ближайший результат — сквозная рабочая модель по P1-12…P1-16 и минимальный контракт клетки P2-01. Фазы 0/1/2 могут двигаться параллельно. Приёмка требует работающего цикла и проверок на новых входах; завершение академического исследования универсальности не является условием начала разработки. Python используется для первого исполнителя; язык генома им не ограничивается. Скалярный прототип ещё не выполняет полный цикл и не подтверждает общую композиционность.
 
-**EN:** Progress only after reproducible tests. Python is used for the first research executor; it does not constrain the genome language. The first prototype does not complete E0 or validate compositionality.
+**EN:** Next deliverable: an end-to-end working model through P1-12…P1-16 and the minimal cell contract P2-01. Phases 0/1/2 may progress concurrently. Acceptance requires a working cycle and checks on new inputs; finishing an academic universality study is not a prerequisite for development. Python is used for the first executor and does not constrain the genome language. The scalar prototype does not yet complete this cycle or validate general compositionality.
+
+## Прикладной слой / Application Layer
+
+| Phase | RU / EN | Status | To-do |
+| --- | --- | --- | --- |
+| A1 | Excel → матрица и другие продукты на ядре / Excel → matrix and other products on the core | Deferred until first core acceptance | [Application backlog](planning/applications.md) |
+
+**RU:** P1-09/10/11 перенесены в A1 с сохранением ID; P0-06 отложена. Возврат — после первого работающего ядра либо явного изменения приоритета пользователем. Пример применения не меняет автоматически текущий план.
+
+**EN:** P1-09/10/11 moved to A1 with IDs preserved; P0-06 is deferred. Resume after the first working core or an explicit user priority change. An illustrative application does not automatically change current work.
 
 ## Правила работы / Workflow
 

@@ -1,5 +1,7 @@
 # First Prototype
 
+**Current priority:** the [first bioengine cycle](11-bioengine-and-applications.md). This document describes the existing scalar foundation; autonomous search, assimilation and cells remain to be built.
+
 [Русский](../ru/09-first-prototype.md) · [Project home](../../README.md) · [Phase 1 to-dos](../../planning/phase-1.md)
 
 **Date:** 2026-10-31. A research sequential Python executor with no external dependencies. Targets Python 3.11+, locally tested on Python 3.14. Copy the repository and run from its root:

@@ -4,6 +4,8 @@
 
 Biology is a design analogy, not proof of equivalence.
 
+Implementation priority and the full feeding/assimilation cycle: [Bioengine and Application Layer](11-bioengine-and-applications.md). Build the bioengine first; application examples do not replace its architecture.
+
 | Analogy | Proposed software responsibility |
 | --- | --- |
 | Cell | Isolated executable worker with a contract and health state |

@@ -1,5 +1,9 @@
 # План экспериментов / Experiment Plan
 
+**RU:** Сохранённый план исследований. По [ADR-003](../adr/003-bioengine-first.md) текущий приоритет — создание и инженерная приёмка [первого биодвижка](../docs/ru/11-bioengine-and-applications.md), P1-12…16. Завершение общего исследования композиционности и параллельного исполнителя не блокирует этот срез. Научные гипотезы не удаляются и не считаются подтверждёнными.
+
+**EN:** Preserved research plan. Under [ADR-003](../adr/003-bioengine-first.md), the priority is construction and engineering acceptance of the [first bioengine](../docs/en/11-bioengine-and-applications.md), P1-12…16. Completing the general compositionality study and parallel executor does not block this slice. Scientific hypotheses remain recorded and unproven.
+
 ## E0 — Baseline
 **RU:** Реальный последовательный/параллельный исполнитель набора задач. Тесты корректности, замеры задержки и ресурсов.  
 **EN:** Real sequential/parallel task executor with correctness tests, latency and resource measurements.
@@ -28,5 +32,6 @@
 **RU:** Новые оценочные сценарии и сравнение двух версий Genesis под внешним протоколом.  
 **EN:** New assessment cases and comparison of two Genesis versions under external protocol.
 
-**RU:** Начинаем строго с E0; последующие эксперименты не считаются реализованными.  
-**EN:** Start at E0; subsequent experiments are not implemented yet.
+**RU:** Последовательность исследовательских сравнений начинается с E0; последующие эксперименты не считаются реализованными. Создание и приёмка первого ядра идут по ADR-003 и текущему плану разработки.
+
+**EN:** The research-comparison sequence starts at E0; subsequent experiments are not implemented yet. Build and accept the first core under ADR-003 and the current implementation plan.
