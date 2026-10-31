@@ -1,0 +1,11 @@
+# For a dedicated ProgrammoWorld distribution, not the existing Docker distro.
+[boot]
+systemd=true
+
+[automount]
+enabled=false
+mountFsTab=false
+
+[interop]
+enabled=false
+appendWindowsPath=false

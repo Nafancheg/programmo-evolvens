@@ -1,0 +1,5 @@
+# Proposed shared WSL2 envelope. Review all other distributions before applying.
+[wsl2]
+memory=4GB
+processors=2
+swap=0

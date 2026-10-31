@@ -1,0 +1,16 @@
+{
+  "version": "wsl2-probe-v0.1",
+  "memory_bytes": 268435456,
+  "cpu_percent_of_one_core": 100,
+  "tasks_max": 64,
+  "nofile": 256,
+  "runtime_seconds": 70,
+  "heartbeat_seconds": 5,
+  "max_input_bytes": 65536,
+  "max_line_bytes": 16384,
+  "max_output_bytes": 1048576,
+  "max_archive_bytes": 33554432,
+  "max_runs": 16,
+  "work_bytes": 16777216,
+  "tmp_bytes": 8388608
+}

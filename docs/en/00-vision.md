@@ -3,7 +3,7 @@
 [Русская версия](../ru/00-vision.md) · [Project home](../../README.md)
 
 ## Purpose
-Build an autonomous bioengine that accepts, processes and assimilates information, retains usable data and develops processing methods through mechanism composition. The next deliverable is a working feeding/assimilation model without external AI agents. Application products belong to the next layer. [Complete model](11-bioengine-and-applications.md), [ADR-003](../../adr/003-bioengine-first.md).
+Build an autonomous organism developing mechanisms and organs from its genome. Before execution, engineer and verify [virtual world W0](13-virtual-world.md) with external quotas and permissions; the world does not co-evolve with the organism. Inside an accepted world, feeding and information assimilation are the first target capability, without external AI agents. Application products belong to the next layer. [Complete model](11-bioengine-and-applications.md), [ADR-006](../../adr/006-world-before-organism.md).
 
 Comparison with conventional software checks practical usefulness. Proof of scientific uniqueness is not a prerequisite for building the system.
 

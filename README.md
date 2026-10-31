@@ -7,11 +7,15 @@
 
 ## Текущее направление / Current Direction
 
-**RU:** Создаём среду исполнения и развития и автономный организм, который разворачивается из генома. Гены задают начальную организацию, механизмы и правила развития; из них формируются клеточные структуры и органы. Пищеварение, усвоение, хранение и использование — функции, до которых организм должен развиться. Для каждой способности прослеживаем путь от генов и структурных изменений до выполненной работы. Внешние ИИ-агенты и языковые модели не требуются. Ближайшая задача — развёртывание генома и онтогенетический цикл; пищеварение — первая целевая способность. Excel и дашборд остаются последующими задачами. Развитие из генома и усвоение пока не реализованы.
+**RU:** Сначала создаём и проверяем ограниченный виртуальный мир W0: внешние квоты ресурсов, закрытые по умолчанию доступы и независимая остановка. Мир проектируется разработчиками и не эволюционирует вместе с организмом. Затем внутри него запускаем развитие из генома: механизмы → клетки → органы → проверяемая функция. Пищеварение и усвоение — первая целевая способность; Excel и дашборд остаются последующими задачами. Организм и Genesis не могут расширить границы мира. Внешние ИИ-агенты не требуются. Защищённый мир, развитие из генома и усвоение пока не реализованы.
 
-**EN:** Build an execution/development environment and an autonomous organism that unfolds from its genome. Genes specify initial organization, mechanisms and developmental rules, from which cellular structures and organs form. Digestion, assimilation, storage and use are functions the organism must develop toward. Trace each capability from genes and structural changes to performed work. External AI agents and language models are not required. Next task: genome unfolding and an ontogenetic cycle; digestion is the first target capability. Excel and dashboards remain later tasks. Genome-driven development and assimilation are not implemented yet.
+**EN:** First build and verify bounded virtual world W0: external resource quotas, default-deny permissions and independent stopping. Developers engineer the world; it does not co-evolve with the organism. Then run genome-driven development inside it: mechanisms → cells → organs → verifiable function. Digestion and assimilation are the first target capability; Excel and dashboards remain later tasks. Neither the organism nor Genesis can expand world boundaries. External AI agents are not required. The protected world, genome-driven development and assimilation are not implemented yet.
 
 [Целостная модель RU](docs/ru/11-bioengine-and-applications.md) · [Complete model EN](docs/en/11-bioengine-and-applications.md) · [План ядра / Core plan](ROADMAP.md) · [Прикладная очередь / Application backlog](planning/applications.md)
+
+[Виртуальный мир RU](docs/ru/13-virtual-world.md) · [Virtual world EN](docs/en/13-virtual-world.md) · [W0](planning/world.md)
+
+**2026-11-01 — W0:** подготовлен [WSL2 backend RU](docs/ru/14-wsl2-backend.md) / [EN](docs/en/14-wsl2-backend.md), конфигурация и контроллер / configuration and controller. 33 модульных проверки прошли на Windows и WSL; реальная изоляция ещё не принята / 33 unit checks passed on Windows and WSL; live isolation is not accepted. Общие настройки WSL не менялись / shared WSL settings were not changed.
 
 ## Первый прототип / First Prototype
 
@@ -61,6 +65,8 @@ Genesis may also evolve, subject to external competence validation. The primary 
 | Deferred Excel Scenario / Отложенный Excel-сценарий | [EN](docs/en/10-excel-to-matrix.md) | [RU](docs/ru/10-excel-to-matrix.md) |
 | Bioengine and Applications / Биодвижок и приложения | [EN](docs/en/11-bioengine-and-applications.md) | [RU](docs/ru/11-bioengine-and-applications.md) |
 | Motivation and Reinforcement / Мотивация и подкрепление | [EN](docs/en/12-motivation-and-reinforcement.md) | [RU](docs/ru/12-motivation-and-reinforcement.md) |
+| Virtual World and Limits / Виртуальный мир и ограничения | [EN](docs/en/13-virtual-world.md) | [RU](docs/ru/13-virtual-world.md) |
+| WSL2 Laboratory Backend / Лабораторный backend WSL2 | [EN](docs/en/14-wsl2-backend.md) | [RU](docs/ru/14-wsl2-backend.md) |
 
 ## Research / Исследования
 

@@ -1,13 +1,16 @@
 # Roadmap / Дорожная карта
 
-**Текущий приоритет / Current priority:** создать развёртывание и развитие организма из генома: начальное состояние → механизмы/клетки/связи → функциональная структура → проверяемая работа органов. Пищеварение и усвоение — первая целевая функция, не встроенный готовый орган / build genome-driven unfolding and development: initial state → mechanisms/cells/connections → functional structure → verifiable organ work. Digestion and assimilation are the first target function, not a prebuilt organ. [Модель RU](docs/ru/11-bioengine-and-applications.md) · [Model EN](docs/en/11-bioengine-and-applications.md) · [ADR-004](adr/004-genome-driven-development.md).
+**Текущий приоритет / Current priority:** сначала спроектировать и проверить ограниченный виртуальный мир W0, затем запускать развитие организма из генома до проверяемой работы органов / first engineer and verify bounded virtual world W0, then execute genome-driven development toward verifiable organ function. Пищеварение остаётся первой целевой функцией / digestion remains the first target function. [Мир RU](docs/ru/13-virtual-world.md) · [World EN](docs/en/13-virtual-world.md) · [ADR-006](adr/006-world-before-organism.md).
 
 **Два слоя / Two layers:** ядро и прикладные продукты / core and application products. Для первой рабочей модели не нужны пользовательский Excel и дашборд; проверки проводим на небольших определённых наборах входов / user Excel files and a dashboard are not prerequisites for the first working model; use small defined input sets for checks. Внешние ИИ-агенты и языковые модели не требуются для работы ядра / external AI agents and language models are not required at core runtime.
+
+**2026-11-01:** первый W0 backend — [WSL2/systemd/bwrap/seccomp RU](docs/ru/14-wsl2-backend.md) / [EN](docs/en/14-wsl2-backend.md). Код и профиль подготовлены; установка/приёмка не выполнены. Семантика мира ведётся отдельно в P2-10/11 и P4-07; не подменяет защитный периметр / Code/profile prepared; installation/acceptance pending. World semantics are tracked separately in P2-10/11 and P4-07 and do not replace containment.
 
 ## Биодвижок: фазы / Bioengine Phases
 
 | Phase | RU | EN | Status | To-do |
 | --- | --- | --- | --- | --- |
+| W0 | Виртуальный мир: внешняя изоляция, ресурсы и доступы | Virtual world: external isolation, resources and permissions | In progress: design | [W0](planning/world.md) |
 | 0 | Контракты и границы первой рабочей модели | Contracts and first-model boundaries | In progress | [P0](planning/phase-0.md) |
 | 1 | Биодвижок: питание, усвоение, композиция | Bioengine: feeding, assimilation, composition | In progress | [P1](planning/phase-1.md) |
 | 2 | Клетки, телеметрия, отказоустойчивость | Cells, telemetry and resilience | In progress | [P2](planning/phase-2.md) |
@@ -16,9 +19,9 @@
 | 5 | Коэволюция Genesis и проверка новых поколений | Genesis co-evolution and generation testing | Planned | [P5](planning/phase-5.md) |
 | 6 | Веб-дашборд на реальных событиях | Dashboard backed by observed events | Planned | [P6](planning/phase-6.md) |
 
-**RU:** Ближайший шаг — P0-09, P1-13/P2-01 → P1-17 → P1-18: контракты, развёртывание генома, онтогенетический цикл. Затем P1-16 проверяет развитие до пищеварительной функции с P1-12/14/15. Фазы 0/1/2 идут по зависимостям параллельно. Развитие требует следа от генома через структурные изменения к выполненной функции. Научная уникальность не блокирует создание. Скалярный Python-прототип пока не реализует развитие или полный цикл; язык генома им не ограничен.
+**RU:** Первая граница исполнения — приёмка мира P2-09 в W0. Контракты генома/клеток P0-09, P1-13/P2-01 проектируются параллельно, но развёртывание P1-17, развитие P1-18 и подбор кандидатов запускаются внутри принятого мира. Затем P1-16 проверяет пищеварительную функцию. Мир создаётся разработчиками и не эволюционирует автоматически; организм и Genesis не расширяют его доступы/квоты. Скалярный Python-прототип не является такой защитой.
 
-**EN:** Next step: P0-09, P1-13/P2-01 → P1-17 → P1-18: contracts, genome unfolding, ontogenetic cycle. P1-16 then checks development toward digestive function alongside P1-12/14/15. Phases 0/1/2 progress concurrently by dependency. Require genome-to-structure-to-function provenance. Scientific uniqueness does not gate construction. The scalar Python prototype does not implement development or the complete cycle; Python does not constrain the genome language.
+**EN:** The first execution boundary is world acceptance P2-09 in W0. Design genome/cell contracts P0-09, P1-13/P2-01 concurrently, but run unfolding P1-17, development P1-18 and candidate search inside the accepted world. P1-16 then checks digestive function. Developers build the world; it does not evolve automatically, and the organism/Genesis cannot expand its permissions or quotas. The scalar Python prototype does not provide this protection.
 
 ## Прикладной слой / Application Layer
 

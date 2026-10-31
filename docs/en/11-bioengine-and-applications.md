@@ -4,6 +4,8 @@
 
 **Date:** 2026-10-31. **Status:** recorded implementation direction. Mechanisms below are development requirements; the current executor supplies only a small foundation. Biological terms identify engineering roles rather than equivalence to living systems.
 
+**Mandatory execution prerequisite:** [virtual world W0](13-virtual-world.md) under [ADR-006](../../adr/006-world-before-organism.md), with externally enforced resources, permissions and supervision. Developers engineer it; neither the organism nor Genesis can develop new external authority. Accept world boundaries before executing developing candidates inside them. Organism contracts may be designed concurrently.
+
 ## 1. Goal and Two Layers
 
 **Programmo Evolvens aims to build an autonomous software organism that accepts information, transforms it into usable internal structures, stores and uses them, and develops available processing methods through mechanism composition and selection.**
@@ -89,6 +91,8 @@ Do not promise understanding of every arbitrary file. New combinations are limit
 Start the vertical slice with **genome-driven development**, making feeding/assimilation the first target work of the resulting organs. First establish limited initial state, mechanism/cell unfolding and an ontogenetic cycle. Then check acquisition of digestive function over a small defined representation family. No Excel product or dashboard is needed. Fix concrete formats and initial operations in contracts before implementing search; do not claim support for all formats.
 
 Completion criteria:
+
+Executing these developing-organism checks requires accepted world W0/P2-09; internal cell limits do not replace external host protection.
 
 0. Provide an initial genome, limited initial state and an unfolding/development trace. Working functional structure arises through genome-specified changes rather than a hard-coded executor pipeline. The environment may accept bytes from birth; processing capability is assessed separately. In an unchanged environment, different genomes produce expected structural and behavioral differences.
 
