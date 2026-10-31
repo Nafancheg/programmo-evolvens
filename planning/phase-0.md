@@ -9,5 +9,6 @@
 | P0-03 | Уточнить атомарность и границы восьми PP / Refine atomicity and boundaries of eight PPs | todo | Наблюдения P1; набор не окончательный / P1 evidence; provisional set |
 | P0-04 | Определить алфавит и версионирование генома / Define genome alphabet and versioning | todo | I-001; JSON v0 — рабочее представление / JSON v0 is a working representation |
 | P0-05 | Пороги и отложенные данные до испытания / Predeclare thresholds and held-out data | todo | До P1-06; независимый оценщик / Before P1-06; independent evaluator |
+| P0-06 | Уточнить прикладной сценарий Excel → матрица по эталонам / Specify applied Excel → matrix scenario from reference pairs | in_progress | [RU](../docs/ru/10-excel-to-matrix.md), [EN](../docs/en/10-excel-to-matrix.md); нужны реальные пары и семантика обновлений / actual pairs and update semantics needed |
 
 **Критерий / Exit:** RU — определения и протокол пригодны для независимого воспроизведения; EN — definitions and protocol support independent reproduction. Документация не доказывает гипотезы / Documentation does not prove hypotheses.

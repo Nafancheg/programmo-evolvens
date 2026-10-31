@@ -1,5 +1,7 @@
 # Roadmap / Дорожная карта
 
+**Первый прикладной сценарий / First applied scenario:** [Excel → итоговая матрица (RU)](docs/ru/10-excel-to-matrix.md) · [Excel → target matrix (EN)](docs/en/10-excel-to-matrix.md). Проверка по входным/эталонным парам, включая актуализацию данных / Reference input/output pairs, including data updates. P0-06 и P1-09/10/11; реализация ожидает реальные примеры / implementation awaits actual examples.
+
 | Phase | RU | EN | Status | To-do |
 | --- | --- | --- | --- | --- |
 | 0 | Концепция, гипотезы и критерии доказательности | Charter, hypotheses and evidence criteria | In progress | [P0](planning/phase-0.md) |
