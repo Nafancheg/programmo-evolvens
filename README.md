@@ -1,54 +1,48 @@
 # Programmo Evolvens
 
 **Biologically Inspired Evolutionary Software Organisms**  
-*Исследовательский проект архитектуры программных организмов.*
+**Биологически ориентированные эволюционирующие программные организмы**
 
-> **Статус: Concept / Research — 2026-10-31.** Проект пока не реализует искусственную жизнь, автономное обучение или генерацию новых программных поколений. Первоначальный браузерный симулятор не является экспериментальным доказательством.
+**Status / Статус:** Concept & Research — 2026-10-31.
 
-## Идея
+## Русский
 
-**Programmo Evolvens** — программный организм, организованный по аналогии с живыми системами. Он выполняет реальные задачи из внешней среды, поддерживает свою работоспособность, накапливает опыт и улучшает поведение в пределах текущей архитектуры.
+**Programmo Evolvens** — концепция программного организма, который выполняет задания внешней среды, поддерживает работоспособность, накапливает опыт и совершенствует своё поведение.
 
-**Genesis** — отдельный, также развивающийся механизм оценки эволюционной зрелости и воспроизводства поколений. Сам организм **не инициирует** создание следующего поколения и **не пишет произвольный исполняемый код**.
+**Genesis** — независимая система оценки и воспроизводства структурных поколений. Организм не инициирует репродукцию и не переписывает исполняемый код. При достаточности текущих возможностей он продолжает внутреннее развитие без смены поколения — **функциональная сингулярность** (термин данного проекта, не технологическая сингулярность).
 
-Структурная эволюция **не самоцель**: если организм устойчиво справляется с предъявленными задачами, он продолжает учиться и оптимизироваться без репродукции. Это состояние в рамках проекта называется **функциональной сингулярностью** (не общепринятая технологическая сингулярность).
+Genesis также может эволюционировать, но его обновление допускается только после внешней проверки компетентности. Главный критерий успеха — **измеримые результаты реальных заданий**, а не симулированные баллы.
 
-## Базовые положения
+## English
 
-1. **Внешняя среда задаёт требования**, а не план смены версий.
-2. **Онтогенез != эволюция**: обучение и настройка в пределах поколения отделены от изменения его архитектуры.
-3. **Функциональный разрыв** должен быть наблюдаем и воспроизводим; отдельная неудача не является основанием для репродукции.
-4. **Оценка независима**: Genesis проводит IQ-подобные испытания адаптивности, устойчивости, переноса опыта и качества решений на новых задачах.
-5. **Genesis коэволюционирует**, но его новая версия проходит внешнюю верификацию; самооценка недостаточна.
-6. **Наследуются подтверждённые свойства**, а не все события и ошибки предыдущего поколения.
-7. **Никаких фиктивных метрик**: показания дашборда должны быть связаны с реальными выполненными задачами и логами экспериментов.
+**Programmo Evolvens** investigates software organisms that execute externally assigned tasks, maintain operational health, accumulate experience and improve behavior.
 
-## Навигация
+**Genesis** independently assesses readiness and governs structural reproduction. Organisms cannot self-authorize reproduction or arbitrarily rewrite executable code. When current capabilities suffice, learning continues without generation changes, a reversible state called **functional singularity** (project-specific, not technological singularity).
 
-- [Видение и границы](docs/00-vision.md)
-- [Биологическая архитектура](docs/01-biological-architecture.md)
-- [Модель организма](docs/02-software-organism.md)
-- [Геном и наследование](docs/03-genome-and-heredity.md)
-- [Обучение и развитие](docs/04-learning-and-development.md)
-- [Genesis](docs/05-genesis.md)
-- [Коэволюция Genesis](docs/06-coevolution.md)
-- [Функциональная сингулярность](docs/07-functional-singularity.md)
-- [Протокол исследований](docs/08-research-methodology.md)
-- [Гипотезы](research/hypotheses.md), [метрики](research/metrics.md), [эксперименты](research/experiments.md)
-- [Архитектурные решения](adr/README.md)
-- [План реализации](ROADMAP.md)
+Genesis may also evolve, subject to external competence validation. The primary success criterion is **measurable performance on real tasks**, not simulated scores.
 
-## Первая проверяемая задача
+## Documentation / Документация
 
-Адаптивная обработка **реальных заданий** (маршрутизация, преобразование и проверка данных) в условиях меняющихся потоков, ограничений ресурсов и отказов компонентов. Сравнение с обычным детерминированным исполнителем на одинаковых наборах входных данных.
+| Topic / Тема | English | Русский |
+| --- | --- | --- |
+| Vision and Scope / Видение и границы | [EN](docs/en/00-vision.md) | [RU](docs/ru/00-vision.md) |
+| Biological Architecture / Биологическая архитектура | [EN](docs/en/01-biological-architecture.md) | [RU](docs/ru/01-biological-architecture.md) |
+| Software Organism / Программный организм | [EN](docs/en/02-software-organism.md) | [RU](docs/ru/02-software-organism.md) |
+| Genome and Heredity / Геном и наследование | [EN](docs/en/03-genome-and-heredity.md) | [RU](docs/ru/03-genome-and-heredity.md) |
+| Learning and Development / Обучение и развитие | [EN](docs/en/04-learning-and-development.md) | [RU](docs/ru/04-learning-and-development.md) |
+| Genesis / Genesis — механизм воспроизводства | [EN](docs/en/05-genesis.md) | [RU](docs/ru/05-genesis.md) |
+| Genesis Co-evolution / Коэволюция Genesis | [EN](docs/en/06-coevolution.md) | [RU](docs/ru/06-coevolution.md) |
+| Functional Singularity / Функциональная сингулярность | [EN](docs/en/07-functional-singularity.md) | [RU](docs/ru/07-functional-singularity.md) |
+| Research Methodology / Методика исследований | [EN](docs/en/08-research-methodology.md) | [RU](docs/ru/08-research-methodology.md) |
 
-**Успех проекта — не красивые графики, а воспроизводимое улучшение качества решения задач с доказанным вкладом обучения и эволюционных механизмов.**
+## Research / Исследования
 
-## Лексика
+- [Hypotheses / Гипотезы](research/hypotheses.md)
+- [Metrics / Метрики](research/metrics.md)
+- [Experiments / Эксперименты](research/experiments.md)
+- [Roadmap / План](ROADMAP.md)
+- [ADR / Решения](adr/README.md)
 
-- **G (Generation)** — версия структурного поколения, **M (Maturity)** — измеряемая зрелость внутри поколения.
-- **Genome** — декларативное описание состава и ограничений системы, а не динамически генерируемый исходный код.
-- **Evolutionary request** — требование к *измеримому результату* следующего поколения с подтверждающими данными.
-- **Functional singularity** — условная функциональная достаточность в данной внешней среде, обратимое состояние.
+**RU:** Реализация ещё не создана. Браузерная демонстрация из предшествующего обсуждения не является доказательством обучения или эволюции. Лицензия пока не выбрана.
 
-Документация на русском; идентификаторы, API и технические термины — на английском. Лицензия пока не выбрана; отсутствие LICENSE не означает разрешение на свободное использование.
+**EN:** Implementation has not started. The prior browser demonstration does not demonstrate actual learning or evolution. No license selected yet.
