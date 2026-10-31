@@ -1,6 +1,7 @@
 # ADR-002 — Первый исполнитель / First Executor
 
-**Дата / Date:** 2026-10-31.  
+**Дата / Date:** 2026-10-31.
+
 **Статус / Status:** Принято для прототипа, формат экспериментальный / Accepted for the prototype, experimental format.
 
 ## Контекст / Context
