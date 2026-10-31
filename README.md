@@ -5,6 +5,21 @@
 
 **Status / Статус:** Concept & Research — 2026-10-31.
 
+## Первый прототип / First Prototype
+
+**RU:** Добавлен исследовательский последовательный исполнитель восьми PP, три декларативных JSON-генома и тесты. Примеры: пороговое обнаружение аномалий, нормализация поля записи и регулирование реальной очереди в памяти. Это первый срез фазы 1; обучение, Genesis, изоляция клеток и закрытый эксперимент ещё впереди.
+
+**EN:** A research sequential executor of eight PPs, three declarative JSON genomes and tests are available. Examples cover threshold anomaly detection, record-field normalization and control of an actual in-memory queue. This is the first phase-1 slice; learning, Genesis, cell isolation and held-out evaluation remain future work.
+
+Python 3.11+; tested on 3.14. No external dependencies / Без внешних зависимостей. Run from the repository root / Запуск из корня репозитория:
+
+```text
+python -m programmo_evolvens --output artifacts/smoke.json
+python -m unittest discover -s tests -v
+```
+
+[Прототип RU](docs/ru/09-first-prototype.md) · [Prototype EN](docs/en/09-first-prototype.md) · [Фазы и to-do / Phases and to-dos](ROADMAP.md) · [Идеи / Ideas](planning/ideas.md)
+
 ## Русский
 
 **Programmo Evolvens** — концепция программного организма, который выполняет задания внешней среды, поддерживает работоспособность, накапливает опыт и совершенствует своё поведение.
@@ -43,6 +58,6 @@ Genesis may also evolve, subject to external competence validation. The primary 
 - [Roadmap / План](ROADMAP.md)
 - [ADR / Решения](adr/README.md)
 
-**RU:** Реализация ещё не создана. Браузерная демонстрация из предшествующего обсуждения не является доказательством обучения или эволюции. Лицензия пока не выбрана.
+**RU:** Реализован только описанный выше исследовательский прототип. Браузерная демонстрация из предшествующего обсуждения не является доказательством обучения или эволюции. Лицензия пока не выбрана.
 
-**EN:** Implementation has not started. The prior browser demonstration does not demonstrate actual learning or evolution. No license selected yet.
+**EN:** Only the research prototype described above is implemented. The prior browser demonstration does not demonstrate actual learning or evolution. No license selected yet.

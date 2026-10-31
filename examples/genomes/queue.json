@@ -1,0 +1,13 @@
+{
+  "schema_version": 0,
+  "id": "queue-controller",
+  "steps": [
+    {"id": "depth", "pp": "SENSE", "version": 1, "inputs": {}, "params": {"source": "queue_depth", "type": "number"}},
+    {"id": "busy", "pp": "COMPARE", "version": 1, "inputs": {"left": {"ref": "depth"}, "right": {"literal": 3}}, "params": {"operator": "gt"}},
+    {"id": "desired", "pp": "DECIDE", "version": 1, "inputs": {"condition": {"ref": "busy"}, "if_true": {"literal": 4}, "if_false": {"literal": 1}}, "params": {}},
+    {"id": "budget", "pp": "REGULATE", "version": 1, "inputs": {"value": {"ref": "desired"}}, "params": {"key": "batch_size", "min": 1, "max": 4}},
+    {"id": "take", "pp": "ACT", "version": 1, "inputs": {"value": {"ref": "budget"}}, "params": {"target": "queue_take"}},
+    {"id": "notify", "pp": "SIGNAL", "version": 1, "inputs": {"value": {"ref": "take"}, "when": {"literal": true}}, "params": {"channel": "processed"}}
+  ],
+  "outputs": {"batch_size": {"ref": "budget"}, "processed": {"ref": "take"}}
+}

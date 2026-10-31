@@ -1,0 +1,12 @@
+{
+  "schema_version": 0,
+  "id": "normalize-record",
+  "steps": [
+    {"id": "raw", "pp": "SENSE", "version": 1, "inputs": {}, "params": {"source": "name", "type": "text"}},
+    {"id": "trimmed", "pp": "TRANSFORM", "version": 1, "inputs": {"value": {"ref": "raw"}}, "params": {"operation": "strip"}},
+    {"id": "canonical", "pp": "TRANSFORM", "version": 1, "inputs": {"value": {"ref": "trimmed"}}, "params": {"operation": "lower"}},
+    {"id": "saved", "pp": "STORE", "version": 1, "inputs": {"value": {"ref": "canonical"}}, "params": {"mode": "write", "key": "last_name", "type": "text"}},
+    {"id": "notify", "pp": "SIGNAL", "version": 1, "inputs": {"value": {"ref": "saved"}, "when": {"literal": true}}, "params": {"channel": "normalized"}}
+  ],
+  "outputs": {"name": {"ref": "saved"}}
+}

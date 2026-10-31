@@ -2,7 +2,7 @@
 
 [Русская версия](../ru/03-genome-and-heredity.md) · [Project home](../../README.md) · [ADR-001](../../adr/001-genetic-model.md)
 
-**Status — 2026-10-31:** agreed architectural direction; the genome format, runtime and experiment have not been implemented. Composition from a small primitive set remains an untested hypothesis.
+**Status — 2026-10-31:** agreed architectural direction. A [first prototype](09-first-prototype.md) provides working JSON v0 and a sequential executor; the final genome format remains undecided and the research experiment has not been executed. Composition from a small primitive set remains an untested hypothesis.
 
 ## Biological analogy and levels of organization
 

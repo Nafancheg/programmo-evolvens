@@ -7,3 +7,4 @@
 ## Решения / Decisions
 
 - [ADR-001 — Генетическая модель / Genetic Model](001-genetic-model.md) — принято как архитектурное направление; гипотеза не проверена / accepted as architectural direction; hypothesis untested.
+- [ADR-002 — Первый исполнитель / First Executor](002-first-executor.md) — принято для прототипа; JSON v0 экспериментальный / accepted for prototype; experimental JSON v0.

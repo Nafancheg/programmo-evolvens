@@ -1,0 +1,11 @@
+{
+  "schema_version": 0,
+  "id": "threshold-anomaly",
+  "steps": [
+    {"id": "sample", "pp": "SENSE", "version": 1, "inputs": {}, "params": {"source": "value", "type": "number"}},
+    {"id": "high", "pp": "COMPARE", "version": 1, "inputs": {"left": {"ref": "sample"}, "right": {"literal": 75}}, "params": {"operator": "gt"}},
+    {"id": "label", "pp": "DECIDE", "version": 1, "inputs": {"condition": {"ref": "high"}, "if_true": {"literal": "anomaly"}, "if_false": {"literal": "normal"}}, "params": {}},
+    {"id": "alert", "pp": "SIGNAL", "version": 1, "inputs": {"value": {"ref": "sample"}, "when": {"ref": "high"}}, "params": {"channel": "alerts"}}
+  ],
+  "outputs": {"classification": {"ref": "label"}}
+}

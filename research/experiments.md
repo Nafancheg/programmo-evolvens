@@ -4,6 +4,10 @@
 **RU:** Реальный последовательный/параллельный исполнитель набора задач. Тесты корректности, замеры задержки и ресурсов.  
 **EN:** Real sequential/parallel task executor with correctness tests, latency and resource measurements.
 
+**RU — состояние 2026-10-31:** появился [последовательный прототип](../docs/ru/09-first-prototype.md): три генома, 14 открытых входов, эталонные функции и журнал времени. Это предварительные проверки, не завершённый E0: сравнение производительности/ресурсов, параллельный исполнитель и полный протокол остаются в [to-do фазы 1](../planning/phase-1.md). Проверка композиционности проводится отдельно после E0 по [протоколу генома](../docs/ru/03-genome-and-heredity.md).
+
+**EN — status 2026-10-31:** a [sequential prototype](../docs/en/09-first-prototype.md) provides three genomes, 14 public inputs, reference functions and timing traces. These are preliminary checks, not completed E0: performance/resource comparison, a parallel executor and the full protocol remain in [phase 1 to-dos](../planning/phase-1.md). Compositionality is evaluated separately after E0 under the [genome protocol](../docs/en/03-genome-and-heredity.md).
+
 ## E1 — Learning
 **RU:** Выбор стратегии по истории выполненных заданий; сравнение до/после и с фиксированной политикой.  
 **EN:** Strategy selection informed by outcome history; compare pre/post learning and frozen policy.
