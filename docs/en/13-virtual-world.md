@@ -2,7 +2,7 @@
 
 [Русский](../ru/13-virtual-world.md) · [World plan W0](../../planning/world.md) · [ADR-006](../../adr/006-world-before-organism.md)
 
-**Source:** user requirement, 2026-10-31. **Status:** architecture and acceptance criteria recorded; the protected executor is not implemented. The existing Python prototype runs inside its host program's process and does not provide this isolation.
+**Source:** user requirement, 2026-10-31. **Status 2026-11-01:** an [existing-WSL backend](15-current-wsl-launch.md) is installed and passed fixed probes; full W0 acceptance remains pending. The in-process scalar Python prototype itself is not an isolation boundary.
 
 ## Purpose and Architectural Placement
 
@@ -48,6 +48,8 @@ The organism monitoring its own boundary cannot be the only protection. Internal
 ## Implementation Choice
 
 Following the user proposal on 2026-11-01, select [WSL2/systemd/bwrap/seccomp](14-wsl2-backend.md) as the first laboratory backend under [ADR-007](../../adr/007-wsl2-laboratory-backend.md). Code/profile are prepared but have not passed W0 acceptance. A dedicated full VM with its own disk remains an alternative for a stronger boundary. Process controls are not presented as complete file/device protection.
+
+The subsequent direction to retain current settings is implemented under [ADR-008](../../adr/008-current-wsl-direct-cgroups.md): direct cgroup v2 instead of enabling systemd. Initial results are [here](15-current-wsl-launch.md); preserve systemd and a separate VM as alternatives.
 
 On Windows, [Job Objects](https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects) manage process groups, and [CPU rate control](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_cpu_rate_control_information) supports a hard CPU-share cap. These are individual controls, not the complete world. Docker containers [lack resource limits by default](https://docs.docker.com/engine/containers/resource_constraints/); calling something a container does not establish compliance.
 

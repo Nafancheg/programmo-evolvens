@@ -1,5 +1,5 @@
 {
-  "version": "wsl2-probe-v0.1",
+  "version": "wsl2-probe-v0.2",
   "memory_bytes": 268435456,
   "cpu_percent_of_one_core": 100,
   "tasks_max": 64,

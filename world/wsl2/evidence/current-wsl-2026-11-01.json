@@ -1,0 +1,159 @@
+{
+  "reports": [
+    {
+      "run_id": "b7a3c38cc7f4420490b975af029d14ed",
+      "backend": "direct-cgroup-v2",
+      "probe": "smoke",
+      "seed": 1,
+      "policy_version": "wsl2-probe-v0.2",
+      "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+      "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+      "started_unix": 1793475993.2560027,
+      "wsl_global_settings_changed": false,
+      "w0_accepted": false,
+      "enforced_limits": {
+        "parent": {
+          "memory.max": "536870912",
+          "memory.swap.max": "0",
+          "pids.max": "128",
+          "cpu.max": "125000 100000"
+        },
+        "control": {
+          "memory.max": "134217728",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "cpu.max": "25000 100000"
+        },
+        "worker": {
+          "memory.max": "268435456",
+          "memory.swap.max": "0",
+          "pids.max": "64",
+          "cpu.max": "100000 100000"
+        }
+      },
+      "outcome": "passed",
+      "elapsed_seconds": 0.09697927700108266,
+      "observed_bytes": 143,
+      "captured_bytes": 143,
+      "observed_sha256": {
+        "stdout": "0a61e43d898e7ab3450c05c0ad7d02af6512e668d614230bc9ca31c1843217e6",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": {
+        "type": "result",
+        "seed": 1,
+        "uid": 65534,
+        "message": "trusted smoke probe"
+      },
+      "worker_stats": {
+        "memory.peak": "18317312",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "pids.peak": "3",
+        "pids.events": "max 0",
+        "cpu.stat": "usage_usec 56269\nuser_usec 40192\nsystem_usec 16076\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+      },
+      "worker_populated_after": false,
+      "hash_scope": "observed bytes before stopping",
+      "event": "finish"
+    },
+    {
+      "run_id": "bc92f62c418f4a24be062fae19ba130f",
+      "backend": "direct-cgroup-v2",
+      "probe": "inspect",
+      "seed": 1,
+      "policy_version": "wsl2-probe-v0.2",
+      "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+      "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+      "started_unix": 1793475997.235708,
+      "wsl_global_settings_changed": false,
+      "w0_accepted": false,
+      "enforced_limits": {
+        "parent": {
+          "memory.max": "536870912",
+          "memory.swap.max": "0",
+          "pids.max": "128",
+          "cpu.max": "125000 100000"
+        },
+        "control": {
+          "memory.max": "134217728",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "cpu.max": "25000 100000"
+        },
+        "worker": {
+          "memory.max": "268435456",
+          "memory.swap.max": "0",
+          "pids.max": "64",
+          "cpu.max": "100000 100000"
+        }
+      },
+      "outcome": "passed",
+      "elapsed_seconds": 0.06650037699728273,
+      "observed_bytes": 406,
+      "captured_bytes": 406,
+      "observed_sha256": {
+        "stdout": "e38098d64fc80e6db925b39895d07c97a526468d6726bc2ce3f13c791a43fc1a",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": {
+        "type": "result",
+        "seed": 1,
+        "passed": true,
+        "checks": {
+          "uid": true,
+          "gid": true,
+          "windows_hidden": true,
+          "home_hidden": true,
+          "control_hidden": true,
+          "docker_hidden": true,
+          "socket_denied": true,
+          "root_write_denied": true,
+          "root_mounted_read_only": true,
+          "network_namespace_private": true,
+          "private_work": true,
+          "environment_clean": true
+        }
+      },
+      "worker_stats": {
+        "memory.peak": "9830400",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "pids.peak": "3",
+        "pids.events": "max 0",
+        "cpu.stat": "usage_usec 61732\nuser_usec 53501\nsystem_usec 8231\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+      },
+      "worker_populated_after": false,
+      "hash_scope": "observed bytes before stopping",
+      "event": "finish"
+    }
+  ],
+  "wsl_conf_unchanged": true,
+  "init_unchanged": true,
+  "private_cgroup_removed": true,
+  "root_controllers_restored": true,
+  "docker_running": true,
+  "w0_accepted": false,
+  "wslconfig_unchanged": true,
+  "wslconfig_sha256": "675c27c3778327360ec88af098f4868382dab1862b99a691daf3e98bf23ab0a6",
+  "date": "2026-11-01",
+  "tests": {
+    "linux": 38,
+    "windows": 33,
+    "windows_skipped_linux_only": 5
+  },
+  "installed_assets_sha256_at_verification": {
+    "direct.py": "022ff4d029c36ac2a1ebee9a3b033b07e93ae50e3cc98cb51c7a66e801de13ff",
+    "controller.py": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+    "policy.json": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+    "seccomp.bpf": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+    "rootfs.manifest.json": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+    "probes/smoke.py": "4eb733ce64a8b7cd9387d247415e25ecb9de185893d439fd73fdde127339a5df",
+    "probes/inspect.py": "d86b8959d1dfd89a1b222b88c84a2d03af0504d961c99112e3540b7a321d3b3c"
+  },
+  "installation": {
+    "assets": "/opt/pe-world",
+    "archive": "/var/lib/pe-world/runs",
+    "account": "pe-organism",
+    "new_distribution_created": false,
+    "restart_performed": false
+  }
+}

@@ -4,7 +4,7 @@
 
 **Два слоя / Two layers:** ядро и прикладные продукты / core and application products. Для первой рабочей модели не нужны пользовательский Excel и дашборд; проверки проводим на небольших определённых наборах входов / user Excel files and a dashboard are not prerequisites for the first working model; use small defined input sets for checks. Внешние ИИ-агенты и языковые модели не требуются для работы ядра / external AI agents and language models are not required at core runtime.
 
-**2026-11-01:** первый W0 backend — [WSL2/systemd/bwrap/seccomp RU](docs/ru/14-wsl2-backend.md) / [EN](docs/en/14-wsl2-backend.md). Код и профиль подготовлены; установка/приёмка не выполнены. Семантика мира ведётся отдельно в P2-10/11 и P4-07; не подменяет защитный периметр / Code/profile prepared; installation/acceptance pending. World semantics are tracked separately in P2-10/11 and P4-07 and do not replace containment.
+**2026-11-01:** по указанию пользователя используем текущий WSL и прямой cgroup v2 без изменения init/общих настроек. [Запуск RU](docs/ru/15-current-wsl-launch.md) / [Launch EN](docs/en/15-current-wsl-launch.md): smoke и 12 проверок прошли; P2-06 выполнена, P2-09 остаётся открытой. Systemd-вариант сохранён / At user direction use existing WSL and direct cgroup v2 without init/shared-setting changes. Smoke and 12 checks passed; P2-06 complete, P2-09 remains open. Preserve the systemd alternative. Семантика мира отдельно в P2-10/11 и P4-07 / World semantics remain separate in P2-10/11 and P4-07.
 
 ## Биодвижок: фазы / Bioengine Phases
 

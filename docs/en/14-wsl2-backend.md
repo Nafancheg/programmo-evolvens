@@ -1,5 +1,7 @@
 # First W0 Backend: WSL2, systemd and Bubblewrap
 
+**Current working variant:** following user direction, [probes ran in existing WSL without configuration changes](15-current-wsl-launch.md), ADR-008. Preserve the prepared systemd variant below; its dedicated-distro requirements were not disabled.
+
 [Русский](../ru/14-wsl2-backend.md) · [World boundaries](13-virtual-world.md) · [Code](../../world/wsl2/controller.py) · [Plan](../../planning/world.md) · [ADR-007](../../adr/007-wsl2-laboratory-backend.md)
 
 **Date:** 2026-11-01. **Status:** reviewable code/configuration prepared; installation and W0 acceptance are pending. No developing organism was executed.

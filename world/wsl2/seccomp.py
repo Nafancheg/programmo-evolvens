@@ -21,7 +21,7 @@ SYSCALLS = (
     "getrlimit", "prlimit64", "fcntl", "ioctl", "poll", "ppoll", "select", "pselect6",
     "dup", "dup2", "dup3", "pipe2", "mkdir", "mkdirat", "unlink", "unlinkat",
     "rename", "renameat", "renameat2", "ftruncate", "fsync", "fdatasync",
-    "execve", "exit", "exit_group"
+    "wait4", "waitid", "execve", "exit", "exit_group"
 )
 
 
