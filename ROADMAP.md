@@ -1,6 +1,6 @@
 # Roadmap / Дорожная карта
 
-**Текущий приоритет / Current priority:** создать автономный биодвижок: приём информации → разбор → проверка → усвоение → память → использование, с самостоятельным подбором допустимых композиций / build an autonomous bioengine: intake → parsing → validation → assimilation → memory → use, with internal search over permitted compositions. [Модель RU](docs/ru/11-bioengine-and-applications.md) · [Model EN](docs/en/11-bioengine-and-applications.md) · [ADR-003](adr/003-bioengine-first.md).
+**Текущий приоритет / Current priority:** создать развёртывание и развитие организма из генома: начальное состояние → механизмы/клетки/связи → функциональная структура → проверяемая работа органов. Пищеварение и усвоение — первая целевая функция, не встроенный готовый орган / build genome-driven unfolding and development: initial state → mechanisms/cells/connections → functional structure → verifiable organ work. Digestion and assimilation are the first target function, not a prebuilt organ. [Модель RU](docs/ru/11-bioengine-and-applications.md) · [Model EN](docs/en/11-bioengine-and-applications.md) · [ADR-004](adr/004-genome-driven-development.md).
 
 **Два слоя / Two layers:** ядро и прикладные продукты / core and application products. Для первой рабочей модели не нужны пользовательский Excel и дашборд; проверки проводим на небольших определённых наборах входов / user Excel files and a dashboard are not prerequisites for the first working model; use small defined input sets for checks. Внешние ИИ-агенты и языковые модели не требуются для работы ядра / external AI agents and language models are not required at core runtime.
 
@@ -16,9 +16,9 @@
 | 5 | Коэволюция Genesis и проверка новых поколений | Genesis co-evolution and generation testing | Planned | [P5](planning/phase-5.md) |
 | 6 | Веб-дашборд на реальных событиях | Dashboard backed by observed events | Planned | [P6](planning/phase-6.md) |
 
-**RU:** Ближайший результат — сквозная рабочая модель по P1-12…P1-16 и минимальный контракт клетки P2-01. Фазы 0/1/2 могут двигаться параллельно. Приёмка требует работающего цикла и проверок на новых входах; завершение академического исследования универсальности не является условием начала разработки. Python используется для первого исполнителя; язык генома им не ограничивается. Скалярный прототип ещё не выполняет полный цикл и не подтверждает общую композиционность.
+**RU:** Ближайший шаг — P0-09, P1-13/P2-01 → P1-17 → P1-18: контракты, развёртывание генома, онтогенетический цикл. Затем P1-16 проверяет развитие до пищеварительной функции с P1-12/14/15. Фазы 0/1/2 идут по зависимостям параллельно. Развитие требует следа от генома через структурные изменения к выполненной функции. Научная уникальность не блокирует создание. Скалярный Python-прототип пока не реализует развитие или полный цикл; язык генома им не ограничен.
 
-**EN:** Next deliverable: an end-to-end working model through P1-12…P1-16 and the minimal cell contract P2-01. Phases 0/1/2 may progress concurrently. Acceptance requires a working cycle and checks on new inputs; finishing an academic universality study is not a prerequisite for development. Python is used for the first executor and does not constrain the genome language. The scalar prototype does not yet complete this cycle or validate general compositionality.
+**EN:** Next step: P0-09, P1-13/P2-01 → P1-17 → P1-18: contracts, genome unfolding, ontogenetic cycle. P1-16 then checks development toward digestive function alongside P1-12/14/15. Phases 0/1/2 progress concurrently by dependency. Require genome-to-structure-to-function provenance. Scientific uniqueness does not gate construction. The scalar Python prototype does not implement development or the complete cycle; Python does not constrain the genome language.
 
 ## Прикладной слой / Application Layer
 

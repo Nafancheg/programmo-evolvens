@@ -39,3 +39,9 @@
 **RU:** Уточняет текущий приоритет ADR-001/002 и переносит Excel-сценарий из активного ядра в прикладную очередь. Не означает, что автономное пищеварение или эволюция уже реализованы.
 
 **EN:** Clarifies ADR-001/002 implementation priority and moves the Excel scenario out of active core work into the application backlog. It does not claim autonomous digestion or evolution is already implemented.
+
+## Уточнение порядка развития / Developmental Order Clarification
+
+**RU:** [ADR-004](004-genome-driven-development.md) уточняет: пищеварительная цепочка выше — целевая функция органов, а не готовая структура среды. Ей предшествуют развёртывание генома и развитие механизмов, клеток и связей. Приёмка требует следа «ген/правило → структура → функция».
+
+**EN:** [ADR-004](004-genome-driven-development.md) clarifies that the digestive sequence above is target organ function, not prebuilt runtime structure. Genome unfolding and mechanism/cell/connection development precede it. Acceptance requires a “gene/rule → structure → function” trace.

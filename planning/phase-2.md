@@ -2,9 +2,9 @@
 
 [Roadmap](../ROADMAP.md) · **Status:** in_progress
 
-**RU:** Минимальный контракт клетки проектируется параллельно первому пищеварительному циклу. Процессная изоляция и сложные органы могут идти позже; клетку не подменяем названием узла графа.
+**RU:** Минимальный контракт клетки проектируется для создания экземпляров при развёртывании генома P1-17 и развитии P1-18. Процессная изоляция и сложные органы могут идти позже; клетку не подменяем названием узла графа.
 
-**EN:** Design the minimal cell contract alongside the first digestion cycle. Process isolation and complex organs may follow later; a cell is not a renamed graph node.
+**EN:** Design the minimal cell contract for instantiation during genome unfolding P1-17 and development P1-18. Process isolation and complex organs may follow later; a cell is not a renamed graph node.
 
 | ID | To-do RU / EN | Status | Зависимость и результат / Dependency and evidence |
 | --- | --- | --- | --- |

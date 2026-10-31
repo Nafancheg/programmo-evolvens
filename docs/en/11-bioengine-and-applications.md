@@ -10,7 +10,7 @@
 
 | Layer | Responsibility | First outcome |
 | --- | --- | --- |
-| 1. Bioengine | Primitives, genome, mechanisms, cells, data movement, assimilation, memory, regulation and internal composition search. Genesis separately governs heritable structural generations. | A complete intake, processing, verification, assimilation and reuse cycle. |
+| 1. Bioengine | A primitive/genome execution and development environment; a developing organism with mechanisms, cells and organs. Genesis separately governs heritable structural generations. | Traceable development from limited initial state to a verifiable function; digestion is the first target organ capability. |
 | 2. Application | Specific tasks and output presentations: Excel → report, target matrix, dashboard and other products. | An application on a working core, with its own inputs and criteria. |
 
 Applications supply desired outcomes and constraints through contracts. The bioengine executes and develops processing mechanisms without branching on application names. Application adapters may provide operations, but their pre-existing availability is not an acquired capability.
@@ -18,6 +18,8 @@ Applications supply desired outcomes and constraints through contracts. The bioe
 The immediate priority is layer 1. Core construction does not depend on receiving user Excel files. Application ideas remain in a [separate backlog](../../planning/applications.md). Research and comparisons inform engineering decisions; the next deliverable is working, checked behavior rather than proof of scientific uniqueness.
 
 ## 2. Feeding, Digestion and Assimilation
+
+**This describes the target work of formed organs.** The sequence “intake → digestion → validation → assimilation → storage → use” is not the organism's prebuilt initial structure. It must develop that functional organization from its genome. Until then, the corresponding capability is absent. See [ADR-004](../../adr/004-genome-driven-development.md).
 
 | Analogy | Engineering meaning | Verifiable outcome |
 | --- | --- | --- |
@@ -48,18 +50,29 @@ A primitive may contain specified logical or computational processing; its capab
 
 The runtime language is not a genome primitive. The existing Python executor is building material: eight limited PPs, scalar ports, manually authored graphs and checks. Complete cells, structured food units, assimilation, durable storage and autonomous graph search are not implemented yet.
 
+**Development is needed between the genome and organ function:**
+
+`genome + initial capabilities + environmental conditions → unfolding and development of mechanisms/cells → coordinated structure → verifiable organ function`
+
+The environment supplies operations, resources and rule execution. The genome specifies initial state, available mechanisms and developmental rules/constraints. A particular organism contains current state and its actual formed structure. These are distinct entities; an environment does not imply a developed organism.
+
+Genome unfolding creates specified instances and connections. An ontogenetic cycle then changes permitted working organization according to genome rules and feedback. Coordinated function and contracts determine which structure qualifies as an organ. The unfolding/development language remains an implementation task; a completed digestive pipeline must not be hidden inside the environment.
+
+Trace each significant capability: **which genes/rules → which mechanism/cell changes → which performed work**. Readiness flags and stage counters do not demonstrate development. Unfolding a specified structure may demonstrate genome-driven development; autonomous acquisition of a new composition and learning need additional checks.
+
 ## 4. Acquiring a Capability
 
-The first change mechanism is an **internal search algorithm** executed by the engine itself. It needs available operations, permitted connections/parameters, outcome criteria and a budget. Runtime operation requires no external AI agent, language-model network call or human choosing each next candidate.
+Start with genome unfolding and an **ontogenetic cycle** that creates and changes the organism's working structure. Internal search is one mechanism for subsequent adaptation within permitted scope. It needs available operations, permitted connections/parameters, outcome criteria and a budget. Runtime operation requires no external AI agent, language-model network call or human choosing each next candidate.
 
 Working cycle: accept a packet → try a stored mechanism → check the result → on failure construct candidates within the permitted scope → execute and assess → retain a usable mechanism and experience → apply to subsequent data. Exhausted budgets or unsupported processing produce an explainable failure.
 
 Candidates may change parameters, compatible operation ordering, branches, permitted component membership and connections. Recombination joins compatible fragments; type, constraint and outcome checks remain mandatory. Retain ancestry, changes, costs and outcomes. Candidates cannot change criteria or references. Search remains to be implemented; this is not a description of existing functionality.
 
-**Distinguish four levels:**
+**Distinguish capability origins:**
 
 | Change | Meaning |
 | --- | --- |
+| Unfold mechanisms, cells and connections from the genome | Development of specified organization; requires a structural trace but alone does not establish learning. |
 | Select an already registered parser | Use an existing capability. This alone is not learning. |
 | Autonomously find a new combination of available operations and confirm use on new inputs | Acquire a checked working mechanism within permitted bounds; ontogeny/adaptation in the current generation. |
 | Change heritable structure or combine genetic fragments beyond the permitted working scope | Candidate for a new generation under separate Genesis assessment. Local search attempts do not increment generation G. |
@@ -71,9 +84,11 @@ Do not promise understanding of every arbitrary file. New combinations are limit
 
 ## 5. Next Working Model
 
-Build the vertical slice around **autonomous feeding and assimilation**, without an Excel product or dashboard. Start with a small predefined family of representations of the same structured data. Fix concrete formats and initial operations in contracts before implementing search; do not claim support for all formats.
+Start the vertical slice with **genome-driven development**, making feeding/assimilation the first target work of the resulting organs. First establish limited initial state, mechanism/cell unfolding and an ontogenetic cycle. Then check acquisition of digestive function over a small defined representation family. No Excel product or dashboard is needed. Fix concrete formats and initial operations in contracts before implementing search; do not claim support for all formats.
 
 Completion criteria:
+
+0. Provide an initial genome, limited initial state and an unfolding/development trace. Working functional structure arises through genome-specified changes rather than a hard-coded executor pipeline. The environment may accept bytes from birth; processing capability is assessed separately. In an unchanged environment, different genomes produce expected structural and behavioral differences.
 
 1. A single intake accepts a bounded byte packet and records provenance; unsupported or damaged content gets an explicit outcome.
 2. The engine executes bounded-operation compositions through a minimal cell model and yields a common typed representation. Intermediate results and undigested content are observable.
@@ -86,6 +101,6 @@ These are first-core development criteria, not achieved results or universality 
 
 ## 6. Current Work and Preserved Directions
 
-Current tasks: **P0-03/P0-08** define PP/data boundaries; **P1-12…P1-16** cover intake, composition, assimilation, internal search and end-to-end acceptance; **P2-01** defines the minimal cell contract. They may progress concurrently according to dependencies. Retain the scalar executor as a prototype rather than presenting it as a complete organism.
+Current tasks: **P0-03/P0-08/P0-09** define PP, data and development-rule boundaries; **P1-17/18** cover genome unfolding and the ontogenetic cycle; **P2-01** defines the minimal cell contract. **P1-12…P1-16** cover subsequent acquisition and checking of digestive function. Tasks may progress concurrently according to dependencies, but functional acceptance requires a development trace. Retain the scalar executor as a prototype rather than presenting it as a complete organism.
 
 Excel/matrix tasks move to the application layer with their original IDs preserved. The dashboard remains a later view of actual events. Nucleotide alphabets, gene combination, PP evolution and internal “energy” remain in the [idea register](../../planning/ideas.md). Revisit them under recorded conditions without changing the current goal whenever a new example arises.
