@@ -60,6 +60,7 @@ Genesis may also evolve, subject to external competence validation. The primary 
 | First Prototype / Первый прототип | [EN](docs/en/09-first-prototype.md) | [RU](docs/ru/09-first-prototype.md) |
 | Deferred Excel Scenario / Отложенный Excel-сценарий | [EN](docs/en/10-excel-to-matrix.md) | [RU](docs/ru/10-excel-to-matrix.md) |
 | Bioengine and Applications / Биодвижок и приложения | [EN](docs/en/11-bioengine-and-applications.md) | [RU](docs/ru/11-bioengine-and-applications.md) |
+| Motivation and Reinforcement / Мотивация и подкрепление | [EN](docs/en/12-motivation-and-reinforcement.md) | [RU](docs/ru/12-motivation-and-reinforcement.md) |
 
 ## Research / Исследования
 

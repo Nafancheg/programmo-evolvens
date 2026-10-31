@@ -64,6 +64,8 @@ Trace each significant capability: **which genes/rules → which mechanism/cell 
 
 Start with genome unfolding and an **ontogenetic cycle** that creates and changes the organism's working structure. Internal search is one mechanism for subsequent adaptation within permitted scope. It needs available operations, permitted connections/parameters, outcome criteria and a budget. Runtime operation requires no external AI agent, language-model network call or human choosing each next candidate.
 
+The user's proposed [motivation](12-motivation-and-reinforcement.md) adds signals for newly verified achievements and absent progress. Its complex controller must also develop from the genome. The organism cannot grant itself reinforcement, which does not replace function checks; the mechanism is not implemented yet.
+
 Working cycle: accept a packet → try a stored mechanism → check the result → on failure construct candidates within the permitted scope → execute and assess → retain a usable mechanism and experience → apply to subsequent data. Exhausted budgets or unsupported processing produce an explainable failure.
 
 Candidates may change parameters, compatible operation ordering, branches, permitted component membership and connections. Recombination joins compatible fragments; type, constraint and outcome checks remain mandatory. Retain ancestry, changes, costs and outcomes. Candidates cannot change criteria or references. Search remains to be implemented; this is not a description of existing functionality.
