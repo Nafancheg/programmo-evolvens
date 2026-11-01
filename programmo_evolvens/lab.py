@@ -1,4 +1,4 @@
-"""Local read-only laboratory dashboard. python -m programmo_evolvens.lab --open"""
+"""Local laboratory dashboard with one bounded experiment action. python -m programmo_evolvens.lab --open"""
 import argparse
 import hashlib
 from collections import deque
@@ -12,6 +12,7 @@ import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlsplit
 import webbrowser
+from .experiment import ExperimentJobs, execute
 
 STATIC = Path(__file__).resolve().parent / 'lab_ui'
 ROOT = Path(__file__).resolve().parent.parent
@@ -88,10 +89,12 @@ class Telemetry:
                 'organism': organism, 'genome': development.get('genome'),
                 'source_code': development.get('source_code'),
                 'bundle_sha256': development['bundle_sha256'], 'source': development['source'],
-                'checks': result.get('cases'), 'scope': result.get('scope')}
+                'checks': result.get('cases'), 'scope': result.get('scope'),
+                'input': result.get('input'), 'expected': result.get('expected'),
+                'reproducible': result.get('reproducible'), 'instances': result.get('instances')}
 
 
-def make_handler(telemetry):
+def make_handler(telemetry, jobs=None):
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
             host = self.headers.get('Host', '')
@@ -105,7 +108,11 @@ def make_handler(telemetry):
                       '/development_view.js': ('development_view.js', 'application/javascript; charset=utf-8'),
                       '/app.css': ('app.css', 'text/css; charset=utf-8')}
             if path == '/api/state':
-                body, mime = telemetry.payload(), 'application/json; charset=utf-8'
+                data = json.loads(telemetry.payload())
+                if jobs is not None:
+                    data['experiment_job'] = jobs.snapshot()
+                    data['job_token'] = jobs.token
+                body, mime = json.dumps(data, ensure_ascii=False).encode('utf-8'), 'application/json; charset=utf-8'
             elif path == '/api/organism':
                 body = json.dumps(telemetry.specimen(), ensure_ascii=False).encode('utf-8')
                 mime = 'application/json; charset=utf-8'
@@ -144,6 +151,36 @@ def make_handler(telemetry):
 
         def log_message(self, *args):
             pass
+
+        def do_POST(self):
+            host = self.headers.get('Host', '')
+            allowed = {f'127.0.0.1:{self.server.server_port}', f'localhost:{self.server.server_port}'}
+            if (jobs is None or host not in allowed or self.headers.get('Origin') != 'http://' + host
+                    or self.headers.get('X-Lab-Token') != jobs.token):
+                self.send_error(403)
+                return
+            if urlsplit(self.path).path != '/api/development':
+                self.send_error(404)
+                return
+            try:
+                size = int(self.headers.get('Content-Length', '-1'))
+                if not 0 <= size <= 4096 or self.headers.get('Transfer-Encoding'):
+                    raise ValueError('Request exceeds 4096 bytes')
+                if self.headers.get('Content-Type', '').split(';')[0] != 'application/json':
+                    raise ValueError('JSON required')
+                data = json.loads(self.rfile.read(size))
+                if not isinstance(data, dict) or set(data) != {'text'}:
+                    raise ValueError('Only text data is accepted')
+                jobs.start(data['text'])
+            except (ValueError, UnicodeError) as exc:
+                self.send_error(400, str(exc))
+                return
+            except RuntimeError as exc:
+                self.send_error(409, str(exc))
+                return
+            self.send_response(202)
+            self.send_header('Content-Length', '0')
+            self.end_headers()
     return Handler
 
 
@@ -161,7 +198,8 @@ def main():
     parser.add_argument('--open', action='store_true')
     args = parser.parse_args()
     telemetry = Telemetry(observe_command(args.distro))
-    server = LocalServer(('127.0.0.1', args.port), make_handler(telemetry))
+    jobs = ExperimentJobs(lambda text: execute(text, args.distro))
+    server = LocalServer(('127.0.0.1', args.port), make_handler(telemetry, jobs))
     sampler = threading.Thread(target=telemetry.run, daemon=True)
     sampler.start()
     url = f'http://127.0.0.1:{server.server_port}'

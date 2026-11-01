@@ -25,6 +25,27 @@ def main():
 
     genome = json.loads(files('programmo_evolvens').joinpath('development_genome.json').read_text())
     original = genome_hash(genome)
+    if 'text' in request.get('payload', {}):
+        text = request['payload']['text']
+        if not isinstance(text, str) or len(text.encode('utf-8')) > 256:
+            raise ValueError('text must be at most 256 UTF-8 bytes')
+        first = Development(genome, emit=emit)
+        result = first.run(text)
+        repeated = Development(genome)
+        second = repeated.run(text)
+        expected = text.strip().lower()
+        cases = [
+            {'case': 'delivery', 'passed': result['delivered'] and second['delivered']},
+            {'case': 'reference', 'passed': result['value'] == expected},
+            {'case': 'two-fresh-instances', 'passed': result == second and first.events == repeated.events},
+            {'case': 'cell-memory', 'passed': result['cells'][1]['memory'] == {'last': expected}},
+            {'case': 'same-genome', 'passed': result['genome_sha256'] == original == genome_hash(genome)},
+        ]
+        print(json.dumps({'type': 'result', 'seed': seed, 'passed': all(case['passed'] for case in cases),
+                          'experiment': 'custom-text-v0', 'cases': cases, 'development': result,
+                          'input': text, 'expected': expected, 'reproducible': cases[2]['passed'],
+                          'instances': 2, 'scope': 'fixed authored genome; no learning or evolution claim'}, ensure_ascii=False), flush=True)
+        return
     baseline = Development(genome, emit=emit)
     result = baseline.run('  HeLLo  ')
     tests = []

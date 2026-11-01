@@ -15,7 +15,7 @@
 
 [Виртуальный мир RU](docs/ru/13-virtual-world.md) · [Virtual world EN](docs/en/13-virtual-world.md) · [W0](planning/world.md)
 
-**2026-11-01 — W0 + Lab:** [приёмка RU](docs/ru/16-w0-acceptance.md) / [acceptance EN](docs/en/16-w0-acceptance.md); 53 Linux tests, 44 Windows passed + 9 Linux-only skipped. [Установка и дашборд RU](docs/ru/17-laboratory-dashboard.md) / [setup and dashboard EN](docs/en/17-laboratory-dashboard.md). WSL/Docker settings unchanged; first bounded development experiment executed / Настройки сохранены; первый ограниченный эксперимент развития выполнен в принятом мире.
+**2026-11-01 — W0 + Lab:** [приёмка RU](docs/ru/16-w0-acceptance.md) / [acceptance EN](docs/en/16-w0-acceptance.md); 62 Linux tests, 52 Windows passed + 10 Linux-only skipped. [Установка и дашборд RU](docs/ru/17-laboratory-dashboard.md) / [setup and dashboard EN](docs/en/17-laboratory-dashboard.md). WSL/Docker settings unchanged; first bounded development experiment executed / Настройки сохранены; первый ограниченный эксперимент развития выполнен в принятом мире.
 
 ```powershell
 .\scripts\setup-lab.ps1 -InstallDependencies
@@ -80,6 +80,7 @@ Genesis may also evolve, subject to external competence validation. The primary 
 | W0 Acceptance / Приёмка W0 | [EN](docs/en/16-w0-acceptance.md) | [RU](docs/ru/16-w0-acceptance.md) |
 | Laboratory and Installation / Лаборатория и установка | [EN](docs/en/17-laboratory-dashboard.md) | [RU](docs/ru/17-laboratory-dashboard.md) |
 | Prescribed Development and Specimen / Предписанное развитие и экземпляр | [EN](docs/en/18-prescribed-development.md) | [RU](docs/ru/18-prescribed-development.md) |
+| Custom Text and Repeatability / Свой текст и повторяемость | [EN](docs/en/19-custom-text-repeatability.md) | [RU](docs/ru/19-custom-text-repeatability.md) |
 
 ## Research / Исследования
 
@@ -94,3 +95,5 @@ Genesis may also evolve, subject to external competence validation. The primary 
 **EN:** Only the research prototype described above is implemented. The prior browser demonstration does not demonstrate actual learning or evolution. No license selected yet.
 
 **Первый экземпляр / First instance:** `text-retention`: one empty cell → two cells + one link; `  HeLLo  ` → `hello` + private cell memory. [RU](docs/ru/18-prescribed-development.md) / [EN](docs/en/18-prescribed-development.md). 10 in-world checks passed; no learning/evolution claim / 10 проверок в мире прошли; обучение/эволюция не заявляются.
+
+**Другой вход / Different input:** use the laboratory’s “Check twice” button or `.\scripts\run-development.ps1 -Text "  DIFFERENT WoRDS  "`. Same authored genome, two fresh instances; no learning/evolution claim / тот же заданный геном, два свежих экземпляра; обучение/эволюция не заявляются.

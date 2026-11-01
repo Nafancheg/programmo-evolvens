@@ -66,7 +66,7 @@ def snapshot():
     current['kernel_release'] = platform.release()
     applicable = applies(acceptance, current, hashlib.sha256((ASSETS / 'acceptance.py').read_bytes()).hexdigest())
     files = list(RUNS.glob('*.jsonl'))
-    for folder in sorted((RUNS / 'history').glob('*'), reverse=True)[:4]:
+    for folder in sorted((RUNS / 'history').glob('*'), key=lambda path: path.stat().st_mtime, reverse=True)[:4]:
         if folder.is_dir() and not folder.is_symlink():
             files.extend(folder.glob('*.jsonl'))
     files = sorted(files, key=lambda p: p.stat().st_mtime, reverse=True)[:80]

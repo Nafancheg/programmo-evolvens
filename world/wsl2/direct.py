@@ -225,7 +225,17 @@ def require_acceptance():
     raise RuntimeError('current W0 acceptance required before development; run run-acceptance.ps1')
 
 
-def run(seed, probe):
+def request_bytes(seed, probe, text=None):
+    payload = {}
+    if text is not None:
+        if probe != 'development' or not isinstance(text, str) or len(text.encode('utf-8')) > 256:
+            raise ValueError('custom development text must be at most 256 UTF-8 bytes')
+        payload['text'] = text
+    return json.dumps({'version': 1, 'seed': seed, 'payload': payload}, ensure_ascii=False).encode('utf-8') + b'\n'
+
+
+def run(seed, probe, text=None):
+    request = request_bytes(seed, probe, text)
     errors = preflight()
     if errors:
         raise RuntimeError("; ".join(errors))
@@ -252,7 +262,6 @@ def run(seed, probe):
         origin = origin_group()
         prepare_groups()
         run_id = uuid.uuid4().hex
-        request = json.dumps({"version": 1, "seed": seed, "payload": {}}).encode() + b"\n"
         monitor = module.Monitor(policy, time.monotonic())
         process = None
         outcome = "controller_error"
@@ -357,6 +366,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=("preflight", "smoke", "inspect", "development", "cleanup", *sorted(FAULTS)))
     parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument('--text-stdin', action='store_true', help='bounded text data for the fixed development genome')
     args = parser.parse_args()
     try:
         if args.mode == "cleanup":
@@ -368,7 +378,13 @@ def main():
             errors = preflight()
             print(json.dumps({"ready": not errors, "errors": errors, "w0_accepted": False}))
             return 2 if errors else 0
-        result = run(args.seed, args.mode)
+        text = None
+        if args.text_stdin:
+            raw = sys.stdin.buffer.read(257)
+            if len(raw) > 256 or args.mode != 'development':
+                raise ValueError('text input requires development and at most 256 UTF-8 bytes')
+            text = raw.decode('utf-8')
+        result = run(args.seed, args.mode, text)
         print(json.dumps(result))
         return 0 if result["outcome"] == "passed" else 1
     except (OSError, RuntimeError, ValueError, subprocess.SubprocessError) as exc:

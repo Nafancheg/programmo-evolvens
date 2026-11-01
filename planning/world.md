@@ -21,3 +21,5 @@
 **Проверено 2026-11-01 / Checked:** [13 сценариев приёмки](../docs/ru/16-w0-acceptance.md), 46 Linux tests, 39 Windows passed + 7 Linux-only skipped; [evidence](../world/wsl2/evidence/w0-acceptance-2026-11-01.json). WSL/Docker settings unchanged. Приёмка относится к последовательному однопоточному профилю; новые доступы и новый ПК требуют повторной проверки / acceptance covers the serial single-threaded profile; new permissions and another PC require verification. [Лаборатория RU](../docs/ru/17-laboratory-dashboard.md) · [Lab EN](../docs/en/17-laboratory-dashboard.md).
 
 **Повторная проверка / Recheck:** новый вход `development` принят по повторённой серии W0 и блокирует исполнение при несовпадающих компонентах. [Current evidence](../world/wsl2/evidence/development-2026-11-01.json).
+
+**Ввод пользователя / User input:** [ADR-012](../adr/012-bounded-custom-text-experiments.md), [повторная приёмка и опыты / reacceptance and trials](../world/wsl2/evidence/custom-text-2026-11-01.json); прежние квоты/доступы сохранены / existing quotas/permissions preserved.

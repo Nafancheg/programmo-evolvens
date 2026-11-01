@@ -19,3 +19,5 @@
 - [ADR-010 — Локальная лаборатория и перенос / Local Laboratory and Portability](010-local-lab-and-portable-setup.md) — ранний дашборд по запросу пользователя; установка проверена здесь, второй ПК впереди / early dashboard at user request; local setup verified, second PC pending.
 
 - [ADR-011 — Предписанное развитие v0 / Prescribed Development v0](011-prescribed-development-v0.md) — исходная клетка → механизмы/клетка/связь → функция в W0; не обучение / initial cell → mechanisms/cell/link → function in W0; not learning.
+
+- [ADR-012 — Свой текст и повторяемость / Custom Text and Repeatability](012-bounded-custom-text-experiments.md) — один ограниченный локальный запуск по данным пользователя, два свежих экземпляра, без изменения генома / one bounded local text action, two fresh instances, unchanged genome.

@@ -68,3 +68,5 @@ Below is **recorded execution**: “Show development”, previous/next steps and
 The passport uses `organism-snapshot-v0`. Importing it and resuming execution are not implemented yet; they belong to future P1-14. Repeat the fixed experiment with `run-development.ps1` inside accepted W0.
 
 **Checked, 2026-11-01:** 10 developing-variant checks inside W0; 20 recorded events; 53 data/admission/interface tests on Linux, 44 on Windows and nine Linux-only skips; recorded frames additionally checked in Node. Repeat the W0 probes for the new entry point before executing development.
+
+[Test different text without editing the genome](19-custom-text-repeatability.md).

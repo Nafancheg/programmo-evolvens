@@ -29,3 +29,5 @@
 **RU:** P6-01 и P6-03 реализуются для лаборатории W0; граф клеток/генома, поколения и воспроизведение остаются отдельными задачами. Новый ПК требует предпосылок WSL2/Python и своей приёмки; чистая установка на втором устройстве пока не проверена. [RU](../docs/ru/17-laboratory-dashboard.md), [EN](../docs/en/17-laboratory-dashboard.md).
 
 **EN:** Implement P6-01 and P6-03 for the W0 laboratory; cell/genome graphs, generations and replay remain separate work. A new PC needs WSL2/Python prerequisites and local acceptance; a clean installation on a second device is not verified yet. [RU](../docs/ru/17-laboratory-dashboard.md), [EN](../docs/en/17-laboratory-dashboard.md).
+
+**Уточнение / Update:** [ADR-012](012-bounded-custom-text-experiments.md) по запросу пользователя добавляет одну ограниченную команду опыта с текстом; наблюдение остаётся чтением / adds one bounded text-experiment action at user request; observation remains read-only.

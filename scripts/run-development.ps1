@@ -1,8 +1,18 @@
 [CmdletBinding()]
-param([string]$Distro = '')
+param([string]$Distro = '', [AllowEmptyString()][string]$Text)
 $ErrorActionPreference = 'Stop'
 . "$PSScriptRoot/wsl-command.ps1"
 $Distro = Get-LabDistro $Distro
+if ($PSBoundParameters.ContainsKey('Text')) {
+    . "$PSScriptRoot/python-command.ps1"
+    $taskPython = Get-LabPython
+    $taskOptions = @('-m', 'programmo_evolvens.experiment', "--text=$Text")
+    if ($Distro) { $taskOptions += @('--distro', $Distro) }
+    Push-Location (Split-Path $PSScriptRoot -Parent)
+    try { & $taskPython.Exe @($taskPython.Prefix) @taskOptions }
+    finally { Pop-Location }
+    exit $LASTEXITCODE
+}
 $taskWsl = @()
 if ($Distro) { $taskWsl = @('-d', $Distro) }
 $taskFreeBytes = (Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory * 1024

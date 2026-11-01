@@ -1,0 +1,1387 @@
+{
+  "date": "2026-11-01",
+  "scope": "same authored genome on new text; no learning/evolution claim",
+  "runs": [
+    {
+      "run_id": "bcfdb9dd198f4f65bfe6de9b6c41eab8",
+      "backend": "direct-cgroup-v2",
+      "probe": "development",
+      "seed": 1,
+      "policy_version": "wsl2-probe-v0.2",
+      "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+      "input_sha256": "811c2d6e5c99337b978f863c827a961ce5ce08214ca571374066ffd03328497c",
+      "started_unix": 1793551784.1271036,
+      "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+      "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+      "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+      "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+      "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+      "wsl_global_settings_changed": false,
+      "w0_accepted": true,
+      "admission": {
+        "source": "/var/lib/pe-world/acceptance-1793551602.json",
+        "sha256": "94d33536f2a33e3e27d5f110eae4600a4a23860aebdf24455310ba481b10e4c6",
+        "profile": "existing-wsl-serial-single-thread-v0"
+      },
+      "enforced_limits": {
+        "parent": {
+          "memory.max": "536870912",
+          "memory.swap.max": "0",
+          "pids.max": "128",
+          "cpu.max": "125000 100000"
+        },
+        "control": {
+          "memory.max": "134217728",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "cpu.max": "25000 100000"
+        },
+        "worker": {
+          "memory.max": "268435456",
+          "memory.swap.max": "0",
+          "pids.max": "64",
+          "cpu.max": "100000 100000"
+        }
+      },
+      "probe_sha256": "7e95cdbedac5b3004bd587b7511bf2e16f631a1ff15ffc516de59a796a346bc0",
+      "outcome": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.15068068700202275,
+      "observed_bytes": 10886,
+      "captured_bytes": 10886,
+      "observed_sha256": {
+        "stdout": "ffe9641c6d3b11c89a164995635a1f07583e4aa53e8089c81652ce24d6e8a9e9",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": {
+        "type": "result",
+        "seed": 1,
+        "passed": true,
+        "experiment": "custom-text-v0",
+        "cases": [
+          {
+            "case": "delivery",
+            "passed": true
+          },
+          {
+            "case": "reference",
+            "passed": true
+          },
+          {
+            "case": "two-fresh-instances",
+            "passed": true
+          },
+          {
+            "case": "cell-memory",
+            "passed": true
+          },
+          {
+            "case": "same-genome",
+            "passed": true
+          }
+        ],
+        "development": {
+          "genome_id": "text-retention",
+          "genome_sha256": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7",
+          "delivered": true,
+          "feedback": "delivered",
+          "value": "different words",
+          "ticks": 4,
+          "cells": [
+            {
+              "id": "seed",
+              "parent": null,
+              "ports": {
+                "in": "text",
+                "out": "text"
+              },
+              "mechanisms": [
+                {
+                  "id": "seed:clean",
+                  "gene": "clean",
+                  "origin": {
+                    "gene": "body",
+                    "rule": "express-clean",
+                    "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+                  }
+                }
+              ],
+              "memory": {},
+              "state": "idle",
+              "health": "ok",
+              "budget": 64,
+              "used_steps": 12,
+              "mailbox_capacity": 4,
+              "origin": {
+                "initial": true,
+                "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+              }
+            },
+            {
+              "id": "memory",
+              "parent": "seed",
+              "ports": {
+                "in": "text",
+                "out": "text"
+              },
+              "mechanisms": [
+                {
+                  "id": "memory:retain",
+                  "gene": "retain",
+                  "origin": {
+                    "gene": "body",
+                    "rule": "express-retain",
+                    "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+                  }
+                }
+              ],
+              "memory": {
+                "last": "different words"
+              },
+              "state": "idle",
+              "health": "ok",
+              "budget": 64,
+              "used_steps": 3,
+              "mailbox_capacity": 4,
+              "origin": {
+                "gene": "body",
+                "rule": "create-memory",
+                "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+              }
+            }
+          ],
+          "links": [
+            {
+              "from": "seed",
+              "from_port": "out",
+              "to": "memory",
+              "to_port": "in",
+              "origin": {
+                "gene": "body",
+                "rule": "connect-cells",
+                "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+              }
+            }
+          ],
+          "fired_rules": [
+            "connect-cells",
+            "create-memory",
+            "express-clean",
+            "express-retain"
+          ],
+          "event_count": 20
+        },
+        "input": "  DIFFERENT WoRDS  ",
+        "expected": "different words",
+        "reproducible": true,
+        "instances": 2,
+        "scope": "fixed authored genome; no learning or evolution claim"
+      },
+      "worker_stats": {
+        "memory.peak": "16568320",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "pids.peak": "3",
+        "pids.events": "max 0",
+        "cpu.stat": "usage_usec 149603\nuser_usec 149603\nsystem_usec 0\nnr_periods 2\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+      },
+      "worker_populated_after": false,
+      "hash_scope": "observed bytes before stopping",
+      "cleanup": {
+        "private_cgroup_removed": true,
+        "root_controllers_restored": true
+      }
+    },
+    {
+      "run_id": "c37de6f85d454fe7a8e9dd48e76dd602",
+      "backend": "direct-cgroup-v2",
+      "probe": "development",
+      "seed": 1,
+      "policy_version": "wsl2-probe-v0.2",
+      "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+      "input_sha256": "8e6f5b6f078d345ded4713cb23eac2234a41e02c9c37d07caa1b338bf706ce89",
+      "started_unix": 1793551784.4671009,
+      "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+      "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+      "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+      "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+      "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+      "wsl_global_settings_changed": false,
+      "w0_accepted": true,
+      "admission": {
+        "source": "/var/lib/pe-world/acceptance-1793551602.json",
+        "sha256": "94d33536f2a33e3e27d5f110eae4600a4a23860aebdf24455310ba481b10e4c6",
+        "profile": "existing-wsl-serial-single-thread-v0"
+      },
+      "enforced_limits": {
+        "parent": {
+          "memory.max": "536870912",
+          "memory.swap.max": "0",
+          "pids.max": "128",
+          "cpu.max": "125000 100000"
+        },
+        "control": {
+          "memory.max": "134217728",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "cpu.max": "25000 100000"
+        },
+        "worker": {
+          "memory.max": "268435456",
+          "memory.swap.max": "0",
+          "pids.max": "64",
+          "cpu.max": "100000 100000"
+        }
+      },
+      "probe_sha256": "7e95cdbedac5b3004bd587b7511bf2e16f631a1ff15ffc516de59a796a346bc0",
+      "outcome": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.15913930700116907,
+      "observed_bytes": 10483,
+      "captured_bytes": 10483,
+      "observed_sha256": {
+        "stdout": "7b58520765d82517b40b162fc3f64b6f69e9af5c4ace84737a8f2a6a11061053",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": {
+        "type": "result",
+        "seed": 1,
+        "passed": true,
+        "experiment": "custom-text-v0",
+        "cases": [
+          {
+            "case": "delivery",
+            "passed": true
+          },
+          {
+            "case": "reference",
+            "passed": true
+          },
+          {
+            "case": "two-fresh-instances",
+            "passed": true
+          },
+          {
+            "case": "cell-memory",
+            "passed": true
+          },
+          {
+            "case": "same-genome",
+            "passed": true
+          }
+        ],
+        "development": {
+          "genome_id": "text-retention",
+          "genome_sha256": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7",
+          "delivered": true,
+          "feedback": "delivered",
+          "value": "",
+          "ticks": 4,
+          "cells": [
+            {
+              "id": "seed",
+              "parent": null,
+              "ports": {
+                "in": "text",
+                "out": "text"
+              },
+              "mechanisms": [
+                {
+                  "id": "seed:clean",
+                  "gene": "clean",
+                  "origin": {
+                    "gene": "body",
+                    "rule": "express-clean",
+                    "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+                  }
+                }
+              ],
+              "memory": {},
+              "state": "idle",
+              "health": "ok",
+              "budget": 64,
+              "used_steps": 12,
+              "mailbox_capacity": 4,
+              "origin": {
+                "initial": true,
+                "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+              }
+            },
+            {
+              "id": "memory",
+              "parent": "seed",
+              "ports": {
+                "in": "text",
+                "out": "text"
+              },
+              "mechanisms": [
+                {
+                  "id": "memory:retain",
+                  "gene": "retain",
+                  "origin": {
+                    "gene": "body",
+                    "rule": "express-retain",
+                    "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+                  }
+                }
+              ],
+              "memory": {
+                "last": ""
+              },
+              "state": "idle",
+              "health": "ok",
+              "budget": 64,
+              "used_steps": 3,
+              "mailbox_capacity": 4,
+              "origin": {
+                "gene": "body",
+                "rule": "create-memory",
+                "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+              }
+            }
+          ],
+          "links": [
+            {
+              "from": "seed",
+              "from_port": "out",
+              "to": "memory",
+              "to_port": "in",
+              "origin": {
+                "gene": "body",
+                "rule": "connect-cells",
+                "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+              }
+            }
+          ],
+          "fired_rules": [
+            "connect-cells",
+            "create-memory",
+            "express-clean",
+            "express-retain"
+          ],
+          "event_count": 20
+        },
+        "input": "",
+        "expected": "",
+        "reproducible": true,
+        "instances": 2,
+        "scope": "fixed authored genome; no learning or evolution claim"
+      },
+      "worker_stats": {
+        "memory.peak": "16408576",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "pids.peak": "3",
+        "pids.events": "max 0",
+        "cpu.stat": "usage_usec 157935\nuser_usec 149836\nsystem_usec 8099\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+      },
+      "worker_populated_after": false,
+      "hash_scope": "observed bytes before stopping",
+      "cleanup": {
+        "private_cgroup_removed": true,
+        "root_controllers_restored": true
+      }
+    },
+    {
+      "run_id": "d22495ef30fd4fdc8295ace9b097c5e5",
+      "backend": "direct-cgroup-v2",
+      "probe": "development",
+      "seed": 1,
+      "policy_version": "wsl2-probe-v0.2",
+      "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+      "input_sha256": "17728c05b71c7991c6e3cb27cc612ebbd87676ad0a8e1482a1d9bf0fdfd1b8b4",
+      "started_unix": 1793551793.0710948,
+      "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+      "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+      "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+      "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+      "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+      "wsl_global_settings_changed": false,
+      "w0_accepted": true,
+      "admission": {
+        "source": "/var/lib/pe-world/acceptance-1793551602.json",
+        "sha256": "94d33536f2a33e3e27d5f110eae4600a4a23860aebdf24455310ba481b10e4c6",
+        "profile": "existing-wsl-serial-single-thread-v0"
+      },
+      "enforced_limits": {
+        "parent": {
+          "memory.max": "536870912",
+          "memory.swap.max": "0",
+          "pids.max": "128",
+          "cpu.max": "125000 100000"
+        },
+        "control": {
+          "memory.max": "134217728",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "cpu.max": "25000 100000"
+        },
+        "worker": {
+          "memory.max": "268435456",
+          "memory.swap.max": "0",
+          "pids.max": "64",
+          "cpu.max": "100000 100000"
+        }
+      },
+      "probe_sha256": "7e95cdbedac5b3004bd587b7511bf2e16f631a1ff15ffc516de59a796a346bc0",
+      "outcome": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.1553760839997267,
+      "observed_bytes": 11928,
+      "captured_bytes": 11928,
+      "observed_sha256": {
+        "stdout": "8dcc976376c03cde254fd81903918545cd626a23be66f6db1f96bea6613b7231",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": {
+        "type": "result",
+        "seed": 1,
+        "passed": true,
+        "experiment": "custom-text-v0",
+        "cases": [
+          {
+            "case": "delivery",
+            "passed": true
+          },
+          {
+            "case": "reference",
+            "passed": true
+          },
+          {
+            "case": "two-fresh-instances",
+            "passed": true
+          },
+          {
+            "case": "cell-memory",
+            "passed": true
+          },
+          {
+            "case": "same-genome",
+            "passed": true
+          }
+        ],
+        "development": {
+          "genome_id": "text-retention",
+          "genome_sha256": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7",
+          "delivered": true,
+          "feedback": "delivered",
+          "value": "\u043d\u043e\u0432\u044b\u0439 \u0442\u0435\u043a\u0441\u0442",
+          "ticks": 4,
+          "cells": [
+            {
+              "id": "seed",
+              "parent": null,
+              "ports": {
+                "in": "text",
+                "out": "text"
+              },
+              "mechanisms": [
+                {
+                  "id": "seed:clean",
+                  "gene": "clean",
+                  "origin": {
+                    "gene": "body",
+                    "rule": "express-clean",
+                    "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+                  }
+                }
+              ],
+              "memory": {},
+              "state": "idle",
+              "health": "ok",
+              "budget": 64,
+              "used_steps": 12,
+              "mailbox_capacity": 4,
+              "origin": {
+                "initial": true,
+                "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+              }
+            },
+            {
+              "id": "memory",
+              "parent": "seed",
+              "ports": {
+                "in": "text",
+                "out": "text"
+              },
+              "mechanisms": [
+                {
+                  "id": "memory:retain",
+                  "gene": "retain",
+                  "origin": {
+                    "gene": "body",
+                    "rule": "express-retain",
+                    "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+                  }
+                }
+              ],
+              "memory": {
+                "last": "\u043d\u043e\u0432\u044b\u0439 \u0442\u0435\u043a\u0441\u0442"
+              },
+              "state": "idle",
+              "health": "ok",
+              "budget": 64,
+              "used_steps": 3,
+              "mailbox_capacity": 4,
+              "origin": {
+                "gene": "body",
+                "rule": "create-memory",
+                "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+              }
+            }
+          ],
+          "links": [
+            {
+              "from": "seed",
+              "from_port": "out",
+              "to": "memory",
+              "to_port": "in",
+              "origin": {
+                "gene": "body",
+                "rule": "connect-cells",
+                "genome": "c20ba1fa4dfbe7fb757036e6781b9911b93e80702a644238d08617013d18d6b7"
+              }
+            }
+          ],
+          "fired_rules": [
+            "connect-cells",
+            "create-memory",
+            "express-clean",
+            "express-retain"
+          ],
+          "event_count": 20
+        },
+        "input": "  \u041d\u041e\u0412\u042b\u0419 \u0422\u0415\u041a\u0421\u0422  ",
+        "expected": "\u043d\u043e\u0432\u044b\u0439 \u0442\u0435\u043a\u0441\u0442",
+        "reproducible": true,
+        "instances": 2,
+        "scope": "fixed authored genome; no learning or evolution claim"
+      },
+      "worker_stats": {
+        "memory.peak": "16404480",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "pids.peak": "3",
+        "pids.events": "max 0",
+        "cpu.stat": "usage_usec 154685\nuser_usec 134332\nsystem_usec 20353\nnr_periods 2\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+      },
+      "worker_populated_after": false,
+      "hash_scope": "observed bytes before stopping",
+      "cleanup": {
+        "private_cgroup_removed": true,
+        "root_controllers_restored": true
+      }
+    }
+  ],
+  "world": {
+    "acceptance": {
+      "profile": "existing-wsl-serial-single-thread-v0",
+      "started_unix": 1793551602.0038714,
+      "before": {
+        "wsl_conf_sha256": "1bd489a49ade547d86ebb14809a2041363db59b114036d21ec2f4f5b2366a710",
+        "pid1": "init(Ubuntu-26.",
+        "root_controllers": [],
+        "docker_pids": [
+          "26"
+        ],
+        "private_cgroup_absent": true
+      },
+      "cases": {
+        "memory": {
+          "run_id": "ad1b9ce17c8845388510f108dc1b9898",
+          "backend": "direct-cgroup-v2",
+          "probe": "memory",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551602.0551116,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+          "outcome": "probe_failed",
+          "returncode": -9,
+          "elapsed_seconds": 0.20580799699746422,
+          "observed_bytes": 65,
+          "captured_bytes": 65,
+          "observed_sha256": {
+            "stdout": "66092ca27cda296edcb8bd17bb2ab0b5282c5881363fef2227325a977bbdf877",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": null,
+          "worker_stats": {
+            "memory.peak": "268435456",
+            "memory.events": "low 0\nhigh 0\nmax 20\noom 1\noom_kill 4\noom_group_kill 1",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 203462\nuser_usec 71810\nsystem_usec 131652\nnr_periods 2\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "output": {
+          "run_id": "92be5a5085794531b8ff1578cfa759ff",
+          "backend": "direct-cgroup-v2",
+          "probe": "output",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551602.3591032,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+          "outcome": "output_limit",
+          "returncode": -9,
+          "elapsed_seconds": 0.08041338900147821,
+          "observed_bytes": 1048641,
+          "captured_bytes": 1048576,
+          "observed_sha256": {
+            "stdout": "982d2c68b8be770f1da72df545c393c7ffb2a2de1533538b4238662293292a2f",
+            "stderr": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b"
+          },
+          "result": null,
+          "worker_stats": {
+            "memory.peak": "9494528",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 55549\nuser_usec 47003\nsystem_usec 8546\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "line": {
+          "run_id": "952037d965d348b3a9aa13493b795f7c",
+          "backend": "direct-cgroup-v2",
+          "probe": "line",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551602.5951207,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+          "outcome": "line_limit",
+          "returncode": -9,
+          "elapsed_seconds": 0.07489400099802879,
+          "observed_bytes": 20065,
+          "captured_bytes": 20065,
+          "observed_sha256": {
+            "stdout": "d6e89ff42219b02ba334c94f9a2f8767d60a2edf29126fc9af838b1dcfde8ea9",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": null,
+          "worker_stats": {
+            "memory.peak": "9498624",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 54435\nuser_usec 37686\nsystem_usec 16749\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "protocol": {
+          "run_id": "79051621f8134dc8a6770204e18b8050",
+          "backend": "direct-cgroup-v2",
+          "probe": "protocol",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551602.7791815,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+          "outcome": "protocol_error",
+          "returncode": -9,
+          "elapsed_seconds": 0.08227330199952121,
+          "observed_bytes": 101,
+          "captured_bytes": 101,
+          "observed_sha256": {
+            "stdout": "da515529117cfa32ed4eb9b7853ce29d209b46ceb1d702204b9ee030fa957d11",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": null,
+          "worker_stats": {
+            "memory.peak": "9498624",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 61577\nuser_usec 57472\nsystem_usec 4105\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "hang": {
+          "run_id": "8c79895504db40caa1299b24f4b9e4f7",
+          "backend": "direct-cgroup-v2",
+          "probe": "hang",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551602.9711342,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+          "outcome": "heartbeat_timeout",
+          "returncode": -9,
+          "elapsed_seconds": 5.103052901002229,
+          "observed_bytes": 65,
+          "captured_bytes": 65,
+          "observed_sha256": {
+            "stdout": "7e5cf47c618b9481a1bcbaa9e5b42f01a4fd41a398707a05b561544cef82b3fb",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": null,
+          "worker_stats": {
+            "memory.peak": "9539584",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 58679\nuser_usec 46105\nsystem_usec 12574\nnr_periods 3\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "closed-pipes": {
+          "run_id": "a8f5311a85654b94b8f434d0ef16d1df",
+          "backend": "direct-cgroup-v2",
+          "probe": "closed-pipes",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551608.1790543,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+          "outcome": "heartbeat_timeout",
+          "returncode": -9,
+          "elapsed_seconds": 5.083475473998988,
+          "observed_bytes": 65,
+          "captured_bytes": 65,
+          "observed_sha256": {
+            "stdout": "6e46bbc2307fd07bd48c8df98e63da28f9b16ff54381e0af23c5e32a26658662",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": null,
+          "worker_stats": {
+            "memory.peak": "9502720",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 52998\nuser_usec 40228\nsystem_usec 12770\nnr_periods 3\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "permissions": {
+          "run_id": "937123e2d6164c41b5fb1076c7be3e3b",
+          "backend": "direct-cgroup-v2",
+          "probe": "permissions",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551613.391114,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+          "outcome": "passed",
+          "returncode": 0,
+          "elapsed_seconds": 0.10655963599856477,
+          "observed_bytes": 398,
+          "captured_bytes": 398,
+          "observed_sha256": {
+            "stdout": "5360ec240d91f2af1d950ef195e656e1795c3e749c675fe1a3f4c53dbb0f36b0",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": {
+            "type": "result",
+            "seed": 1,
+            "passed": true,
+            "checks": {
+              "fork_denied": true,
+              "clone3_denied": true,
+              "unshare_denied": true,
+              "mount_denied": true,
+              "ptrace_denied": true,
+              "bpf_denied": true,
+              "socket_denied": true,
+              "no_new_privs": true,
+              "no_capabilities": true,
+              "nofile_enforced": true,
+              "nofile_policy": true,
+              "tmpfs_enforced": true
+            }
+          },
+          "worker_stats": {
+            "memory.peak": "28217344",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 81131\nuser_usec 61814\nsystem_usec 19317\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "inspect": {
+          "run_id": "736bd4896ddc4ce08ca7edb93bc0edf7",
+          "backend": "direct-cgroup-v2",
+          "probe": "inspect",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551613.5871398,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "d86b8959d1dfd89a1b222b88c84a2d03af0504d961c99112e3540b7a321d3b3c",
+          "outcome": "passed",
+          "returncode": 0,
+          "elapsed_seconds": 0.06188055999882636,
+          "observed_bytes": 407,
+          "captured_bytes": 407,
+          "observed_sha256": {
+            "stdout": "40394a10695ee891042d327edad0227121842689c1f1aa0be1c4071e26327274",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": {
+            "type": "result",
+            "seed": 1,
+            "passed": true,
+            "checks": {
+              "uid": true,
+              "gid": true,
+              "windows_hidden": true,
+              "home_hidden": true,
+              "control_hidden": true,
+              "docker_hidden": true,
+              "socket_denied": true,
+              "root_write_denied": true,
+              "root_mounted_read_only": true,
+              "network_namespace_private": true,
+              "private_work": true,
+              "environment_clean": true
+            }
+          },
+          "worker_stats": {
+            "memory.peak": "9420800",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 58927\nuser_usec 47142\nsystem_usec 11785\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "cpu": {
+          "run_id": "109912677eb9461092c77e030e16888a",
+          "backend": "direct-cgroup-v2",
+          "probe": "cpu",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551613.795104,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+          "outcome": "probe_failed",
+          "returncode": 137,
+          "elapsed_seconds": 70.00528735599801,
+          "observed_bytes": 9223,
+          "captured_bytes": 9223,
+          "observed_sha256": {
+            "stdout": "e9d5def52d9842e2f1015b16089803e3fef510a158dd7cead4036db288aa764a",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": null,
+          "worker_stats": {
+            "memory.peak": "9494528",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 69976496\nuser_usec 69972497\nsystem_usec 3998\nnr_periods 700\nnr_throttled 28\nthrottled_usec 21224\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "deadline": {
+          "run_id": "22626feea3eb4f9994dcca15a6b3d9a2",
+          "backend": "direct-cgroup-v2",
+          "probe": "deadline",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551683.891396,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+          "outcome": "runtime_limit",
+          "returncode": -9,
+          "elapsed_seconds": 70.03328936199978,
+          "observed_bytes": 9235,
+          "captured_bytes": 9235,
+          "observed_sha256": {
+            "stdout": "72374c771d23001a970cccf195576e9f84b64cae3730b796b5e9192442dc5158",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": null,
+          "worker_stats": {
+            "memory.peak": "9523200",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 115573\nuser_usec 106428\nsystem_usec 9145\nnr_periods 115\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "pids": {
+          "helper": {
+            "denied": true,
+            "children": 63
+          },
+          "returncode": 0,
+          "worker_stats": {
+            "memory.peak": "48713728",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "64",
+            "pids.events": "max 1",
+            "cpu.stat": "usage_usec 70164\nuser_usec 19490\nsystem_usec 50674\nnr_periods 3\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "scope": "trusted kernel quota stress; workload seccomp unchanged",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "controller-death-and-concurrency": {
+          "controller_returncode": -9,
+          "worker_empty_after_seconds": 0.021107640997797716,
+          "concurrent_launch_rejected": true,
+          "worker_stats": {
+            "memory.peak": "10448896",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 57632\nuser_usec 54030\nsystem_usec 3602\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "interrupted_journals": [
+            "13c2795a91b1409586b024ec141f7bcf.jsonl"
+          ],
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        },
+        "recovery": {
+          "run_id": "769dab300915464e826349b07fdbc384",
+          "backend": "direct-cgroup-v2",
+          "probe": "smoke",
+          "seed": 1,
+          "policy_version": "wsl2-probe-v0.2",
+          "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+          "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+          "started_unix": 1793551757.363106,
+          "controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8",
+          "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+          "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+          "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+          "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+          "wsl_global_settings_changed": false,
+          "w0_accepted": false,
+          "admission": null,
+          "enforced_limits": {
+            "parent": {
+              "memory.max": "536870912",
+              "memory.swap.max": "0",
+              "pids.max": "128",
+              "cpu.max": "125000 100000"
+            },
+            "control": {
+              "memory.max": "134217728",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "cpu.max": "25000 100000"
+            },
+            "worker": {
+              "memory.max": "268435456",
+              "memory.swap.max": "0",
+              "pids.max": "64",
+              "cpu.max": "100000 100000"
+            }
+          },
+          "probe_sha256": "4eb733ce64a8b7cd9387d247415e25ecb9de185893d439fd73fdde127339a5df",
+          "outcome": "passed",
+          "returncode": 0,
+          "elapsed_seconds": 0.04616858000008506,
+          "observed_bytes": 143,
+          "captured_bytes": 143,
+          "observed_sha256": {
+            "stdout": "3d862ba2feaf85152c33fd2ab28e47c89149549abc735db41a1369d0067ac3a1",
+            "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "result": {
+            "type": "result",
+            "seed": 1,
+            "uid": 65534,
+            "message": "trusted smoke probe"
+          },
+          "worker_stats": {
+            "memory.peak": "9519104",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+            "pids.peak": "3",
+            "pids.events": "max 0",
+            "cpu.stat": "usage_usec 44828\nuser_usec 40753\nsystem_usec 4075\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+          },
+          "worker_populated_after": false,
+          "hash_scope": "observed bytes before stopping",
+          "cleanup": {
+            "private_cgroup_removed": true,
+            "root_controllers_restored": true
+          }
+        }
+      },
+      "accepted": true,
+      "suite_sha256": "75746a2a6801ee26cd134d824df709878b1b08cbcc905498cb2fefe0a1180fc7",
+      "after": {
+        "wsl_conf_sha256": "1bd489a49ade547d86ebb14809a2041363db59b114036d21ec2f4f5b2366a710",
+        "pid1": "init(Ubuntu-26.",
+        "root_controllers": [],
+        "docker_pids": [
+          "26"
+        ],
+        "private_cgroup_absent": true
+      },
+      "finished_unix": 1793551757.5213654
+    },
+    "sha256": "94d33536f2a33e3e27d5f110eae4600a4a23860aebdf24455310ba481b10e4c6",
+    "world_empty": true,
+    "installed_controller_sha256": "9bd2d76abd320305cefad0e7e20229ccad7670212eebd90dae38a111279769b8"
+  },
+  "tests": {
+    "linux_passed": 62,
+    "windows_passed": 52,
+    "windows_linux_only_skipped": 10
+  },
+  "ui_submit_verified": true,
+  "csrf_and_schema_tests_passed": true,
+  "boundary_trial": {
+    "input_bytes": 256,
+    "input_pattern": "NUL repeated 256 times",
+    "input_sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1",
+    "run_id": "abffd332c24241abbfd7bf5b0fa2b539",
+    "passed": true,
+    "reproducible": true,
+    "max_line_bytes": 8222,
+    "worker_populated_after": false,
+    "cleanup": {
+      "private_cgroup_removed": true,
+      "root_controllers_restored": true
+    }
+  }
+}

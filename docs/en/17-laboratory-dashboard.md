@@ -16,7 +16,7 @@ The page displays the current probe, CPU, memory, process/thread count, W0 accep
 
 A short probe may finish between samples: its measured peak memory appears in the journal but may not appear on the live chart. CPU uses external counter deltas; the first sample of a new run has no estimate. Missing sources show an error rather than fabricated zeros. Interrupted runs differ from completed ones; expected stops from accepted trial series have separate labels.
 
-First prescribed cell development is demonstrated in a [limited experiment](18-prescribed-development.md); generations and organ functions remain pending. The dashboard cannot launch or modify an organism. Acceptance applies only when controller, policy, seccomp, rootfs-manifest and tester hashes match installed components.
+First prescribed cell development is demonstrated in a [limited experiment](18-prescribed-development.md); generations and organ functions remain pending. The dashboard can run the fixed experiment with custom text; code and genome remain unchanged. Acceptance applies only when controller, policy, seccomp, rootfs-manifest and tester hashes match installed components.
 
 ## New Windows PC
 
@@ -53,6 +53,8 @@ Logs and a positive report from this computer do not verify the new PC. Run acce
 
 Check-only leaves installation unchanged. Updating requires a stopped world, uses the shared lock, preserves previous components in `/opt/pe-world/versions` and retains logs. A different installation is not overwritten without `-UpdateWorld`. Repeat acceptance when profile components change. At 16 active journals further runs are rejected: preserve old files in `runs/history` within the total budget, without deleting evidence.
 
-The server binds only to `127.0.0.1`; its HTTP interface supports reading without job controls. The WSL exporter executes fixed journal/cgroup-reading code. The page cannot supply commands or arbitrary paths.
+The server binds only to `127.0.0.1`; its HTTP interface supports reading and one bounded text-check action under [ADR-012](../../adr/012-bounded-custom-text-experiments.md). The WSL exporter executes fixed journal/cgroup-reading code. The page cannot supply commands or arbitrary paths.
 
 **Update, 2026-11-01:** the laboratory includes a resulting instance, genome/source from its executed bundle, specimen JSON export and stepwise recorded replay. After acceptance run `.\scripts\run-development.ps1` to create an instance on this PC. [Result description](18-prescribed-development.md).
+
+**Custom text:** enter at most 256 UTF-8 bytes and click “Check twice”. This uses a fixed genome and does not establish learning. [Repeatability checks](19-custom-text-repeatability.md).

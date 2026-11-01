@@ -10,6 +10,7 @@ from unittest.mock import patch
 
 from programmo_evolvens.lab import LocalServer, Telemetry, make_handler
 from world.wsl2.observe import applies, development_events
+from programmo_evolvens.experiment import validate_text
 
 
 class LabTelemetryTests(unittest.TestCase):
@@ -84,7 +85,7 @@ class LabHttpTests(unittest.TestCase):
             error.exception.close()
 
     def test_no_execution_endpoint_or_filesystem_traversal(self):
-        for request, code in ((Request(self.url+'/api/run', data=b'{}'), 501),
+        for request, code in ((Request(self.url+'/api/run', data=b'{}'), 403),
                               (Request(self.url+'/../world/wsl2/policy.json'), 404)):
             with self.subTest(url=request.full_url), self.assertRaises(HTTPError) as error:
                 urlopen(request, timeout=2)
@@ -105,3 +106,53 @@ class LabHttpTests(unittest.TestCase):
             self.assertEqual(response.read(), b'# saved source')
         with urlopen(self.url+'/source/genome.json', timeout=2) as response:
             self.assertEqual(json.load(response), {'schema': 'development-v0'})
+
+
+class LabControlTests(unittest.TestCase):
+    def setUp(self):
+        self.seen=[]
+        def start(text):
+            validate_text(text)
+            self.seen.append(text)
+        jobs=SimpleNamespace(token='test-token', start=start, snapshot=lambda:{'status':'idle'})
+        self.server=LocalServer(('127.0.0.1',0),make_handler(Telemetry([]),jobs))
+        self.thread=threading.Thread(target=lambda:self.server.serve_forever(poll_interval=.01),daemon=True)
+        self.thread.start()
+        self.url=f'http://127.0.0.1:{self.server.server_port}'
+
+    def tearDown(self):
+        self.server.shutdown()
+        self.server.server_close()
+        self.thread.join(timeout=2)
+
+    def request(self, value, overrides=None):
+        headers={'Content-Type':'application/json','Origin':self.url,'X-Lab-Token':'test-token'}
+        headers.update(overrides or {})
+        return Request(self.url+'/api/development',data=json.dumps(value).encode(),headers=headers)
+
+    def test_authorized_text_is_accepted_without_any_command_field(self):
+        with urlopen(self.request({'text':'  OTHER  '}),timeout=2) as response:
+            self.assertEqual(response.status,202)
+        self.assertEqual(self.seen,['  OTHER  '])
+
+    def test_nonce_and_same_origin_are_required(self):
+        for override in ({'X-Lab-Token':'wrong'},{'Origin':'http://attacker.invalid'}):
+            with self.assertRaises(HTTPError) as error:
+                urlopen(self.request({'text':'data'},override),timeout=2)
+            self.assertEqual(error.exception.code,403)
+            error.exception.close()
+        self.assertEqual(self.seen,[])
+
+    def test_additional_control_fields_are_rejected(self):
+        with self.assertRaises(HTTPError) as error:
+            urlopen(self.request({'text':'data','command':'not accepted'}),timeout=2)
+        self.assertEqual(error.exception.code,400)
+        error.exception.close()
+        self.assertEqual(self.seen,[])
+
+    def test_text_over_limit_is_rejected_without_job_creation(self):
+        with self.assertRaises(HTTPError) as error:
+            urlopen(self.request({'text':'x'*257}),timeout=2)
+        self.assertEqual(error.exception.code,400)
+        error.exception.close()
+        self.assertEqual(self.seen,[])

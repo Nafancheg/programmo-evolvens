@@ -13,6 +13,13 @@ if sys.platform == "linux":
 
 @unittest.skipUnless(sys.platform == "linux", "direct cgroup backend is Linux-only")
 class DirectWorldTests(unittest.TestCase):
+    def test_custom_input_is_bounded_data_for_development_only(self):
+        self.assertEqual(json.loads(direct.request_bytes(1, 'development', '  OTHER  '))['payload'], {'text':'  OTHER  '})
+        self.assertEqual(json.loads(direct.request_bytes(1, 'development', ''))['payload'], {'text':''})
+        for mode,text in (('smoke','data'),('development','x'*257)):
+            with self.subTest(mode=mode), self.assertRaises(ValueError):
+                direct.request_bytes(1,mode,text)
+
     def test_development_requires_matching_accepted_runtime(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
