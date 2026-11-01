@@ -8,8 +8,8 @@
 
 | ID | To-do RU / EN | Status | Зависимость и результат / Dependency and evidence |
 | --- | --- | --- | --- |
-| P2-01 | Контракт клетки, жизненный цикл и здоровье / Cell contract, lifecycle and health | in_progress | [Модель RU](../docs/ru/11-bioengine-and-applications.md), [EN](../docs/en/11-bioengine-and-applications.md); точный контракт и реализация впереди / exact contract and implementation pending; нужно для P1-15/16 / needed by P1-15/16 |
-| P2-03 | Телеметрия, происхождение событий, восстановление / Telemetry, provenance and recovery | todo | P2-01/09; реальные отказы проверяются внутри принятого мира / test actual failures inside the accepted world |
+| P2-01 | Контракт клетки, жизненный цикл и здоровье / Cell contract, lifecycle and health | done | v0: private memory/inbox, text ports, lifetime step budget, idle/running/stopped and health; [Развитие RU](../docs/ru/18-prescribed-development.md), [EN](../docs/en/18-prescribed-development.md), [evidence](../world/wsl2/evidence/development-2026-11-01.json) |
+| P2-03 | Телеметрия, происхождение событий, восстановление / Telemetry, provenance and recovery | in_progress | v0 provenance + budget-stop events verified; cell recovery pending P2-04 / происхождение и остановка проверены, восстановление впереди; [Развитие RU](../docs/ru/18-prescribed-development.md), [EN](../docs/en/18-prescribed-development.md), [evidence](../world/wsl2/evidence/development-2026-11-01.json) |
 | P2-04 | Гомеостаз, карантин, регенерация и апоптоз / Homeostasis, quarantine, regeneration and apoptosis | todo | P2-02/03; E2 vs restart |
 | P2-05 | Контракты органов и каналов сигналов / Organ and signaling-channel contracts | todo | P2-01/03; несколько клеток / multiple cells |
 

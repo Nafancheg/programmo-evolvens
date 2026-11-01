@@ -1,0 +1,172 @@
+{
+  "schema": "development-v0",
+  "id": "text-retention",
+  "initial": {
+    "cell": "seed",
+    "budget": 64
+  },
+  "endpoint": {
+    "cell": "memory",
+    "port": "out"
+  },
+  "genes": [
+    {
+      "id": "clean",
+      "kind": "mechanism",
+      "program": {
+        "schema_version": 0,
+        "id": "clean-text",
+        "steps": [
+          {
+            "id": "read",
+            "pp": "SENSE",
+            "version": 1,
+            "inputs": {},
+            "params": {
+              "source": "in",
+              "type": "text"
+            }
+          },
+          {
+            "id": "trim",
+            "pp": "TRANSFORM",
+            "version": 1,
+            "inputs": {
+              "value": {
+                "ref": "read"
+              }
+            },
+            "params": {
+              "operation": "strip"
+            }
+          },
+          {
+            "id": "lower",
+            "pp": "TRANSFORM",
+            "version": 1,
+            "inputs": {
+              "value": {
+                "ref": "trim"
+              }
+            },
+            "params": {
+              "operation": "lower"
+            }
+          }
+        ],
+        "outputs": {
+          "out": {
+            "ref": "lower"
+          }
+        }
+      }
+    },
+    {
+      "id": "retain",
+      "kind": "mechanism",
+      "program": {
+        "schema_version": 0,
+        "id": "retain-text",
+        "steps": [
+          {
+            "id": "read",
+            "pp": "SENSE",
+            "version": 1,
+            "inputs": {},
+            "params": {
+              "source": "in",
+              "type": "text"
+            }
+          },
+          {
+            "id": "save",
+            "pp": "STORE",
+            "version": 1,
+            "inputs": {
+              "value": {
+                "ref": "read"
+              }
+            },
+            "params": {
+              "mode": "write",
+              "key": "last",
+              "type": "text"
+            }
+          },
+          {
+            "id": "emit",
+            "pp": "SIGNAL",
+            "version": 1,
+            "inputs": {
+              "value": {
+                "ref": "save"
+              },
+              "when": {
+                "literal": true
+              }
+            },
+            "params": {
+              "channel": "retained"
+            }
+          }
+        ],
+        "outputs": {
+          "out": {
+            "ref": "emit"
+          }
+        }
+      }
+    },
+    {
+      "id": "body",
+      "kind": "development",
+      "rules": [
+        {
+          "id": "express-clean",
+          "when": {
+            "feedback": "source_unexpressed"
+          },
+          "action": {
+            "op": "express",
+            "cell": "seed",
+            "gene": "clean"
+          }
+        },
+        {
+          "id": "create-memory",
+          "when": {
+            "feedback": "endpoint_missing"
+          },
+          "action": {
+            "op": "bud",
+            "parent": "seed",
+            "cell": "memory",
+            "budget": 64
+          }
+        },
+        {
+          "id": "express-retain",
+          "when": {
+            "feedback": "endpoint_unexpressed"
+          },
+          "action": {
+            "op": "express",
+            "cell": "memory",
+            "gene": "retain"
+          }
+        },
+        {
+          "id": "connect-cells",
+          "when": {
+            "feedback": "disconnected"
+          },
+          "action": {
+            "op": "connect",
+            "from": "seed",
+            "to": "memory"
+          }
+        }
+      ]
+    }
+  ]
+}

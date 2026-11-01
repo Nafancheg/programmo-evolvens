@@ -195,11 +195,41 @@ def sample_stats(group):
     return result
 
 
+def runtime_identity():
+    module = shared()
+    result = {key: module.digest((ASSETS / name).read_bytes()) for key, name in (
+        ('controller_sha256', 'direct.py'), ('shared_controller_sha256', 'controller.py'),
+        ('policy_sha256', 'policy.json'), ('seccomp_sha256', 'seccomp.bpf'),
+        ('rootfs_manifest_sha256', 'rootfs.manifest.json'))}
+    result['kernel_release'] = platform.release()
+    return result
+
+
+def require_acceptance():
+    module = shared()
+    current = runtime_identity()
+    suite = module.digest((ASSETS / 'acceptance.py').read_bytes())
+    required = {'memory', 'output', 'line', 'protocol', 'hang', 'closed-pipes', 'permissions',
+                'inspect', 'cpu', 'deadline', 'pids', 'controller-death-and-concurrency', 'recovery'}
+    for path in sorted(ARCHIVE.parent.glob('acceptance-*.json'), reverse=True)[:16]:
+        if not module.trusted_tree(path) or path.stat().st_size > 262144:
+            raise RuntimeError('untrusted W0 acceptance record')
+        raw = path.read_bytes()
+        record = json.loads(raw)
+        cases = record.get('cases', {})
+        if (record.get('accepted') is True and record.get('profile') == 'existing-wsl-serial-single-thread-v0'
+                and record.get('suite_sha256') == suite and required <= cases.keys()
+                and all(all(cases[key].get(field) == value for field, value in current.items())
+                        for key in required - {'pids', 'controller-death-and-concurrency'})):
+            return {'source': str(path), 'sha256': module.digest(raw), 'profile': record['profile']}
+    raise RuntimeError('current W0 acceptance required before development; run run-acceptance.ps1')
+
+
 def run(seed, probe):
     errors = preflight()
     if errors:
         raise RuntimeError("; ".join(errors))
-    if probe not in {"smoke", "inspect"} | FAULTS:
+    if probe not in {"smoke", "inspect", "development"} | FAULTS:
         raise RuntimeError("only fixed trusted probes are admitted before W0 acceptance")
     module = shared()
     policy, policy_hash = module.load_policy()
@@ -208,6 +238,11 @@ def run(seed, probe):
     parent = os.getpid()
     with (ARCHIVE / ".lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        admission = None
+        if probe == 'development':
+            if not module.trusted_tree(ASSETS / 'development.pyz'):
+                raise RuntimeError('trusted development bundle missing')
+            admission = require_acceptance()
         archive_files = list(ARCHIVE.rglob("*"))
         if any(p.is_symlink() for p in archive_files):
             raise RuntimeError("archive contains a symlink")
@@ -226,12 +261,9 @@ def run(seed, probe):
         report = {"run_id": run_id, "backend": "direct-cgroup-v2", "probe": probe,
                   "seed": seed, "policy_version": policy["version"], "policy_sha256": policy_hash,
                   "input_sha256": module.digest(request), "started_unix": time.time(),
-                  "controller_sha256": module.digest(Path(__file__).read_bytes()),
-                  "shared_controller_sha256": module.digest((ASSETS / "controller.py").read_bytes()),
-                  "kernel_release": platform.release(),
-                  "seccomp_sha256": module.digest((ASSETS / "seccomp.bpf").read_bytes()),
-                  "rootfs_manifest_sha256": module.digest((ASSETS / "rootfs.manifest.json").read_bytes()),
-                  "wsl_global_settings_changed": False, "w0_accepted": False}
+                  **runtime_identity(),
+                  "wsl_global_settings_changed": False, "w0_accepted": admission is not None,
+                  "admission": admission}
         report["enforced_limits"] = {kind: {name: (group / name).read_text().strip() for name in LIMITS[kind]}
                                      for kind, group in (("parent", BASE), ("control", BASE / "control"), ("worker", BASE / "worker"))}
         fd = os.open(ASSETS / "seccomp.bpf", os.O_RDONLY | os.O_NOFOLLOW)
@@ -241,8 +273,11 @@ def run(seed, probe):
         elif probe in FAULTS:
             args[args.index(str(ASSETS / "probes/smoke.py"))] = str(ASSETS / "probes/fault.py")
             args.append(probe)
-        report["probe_sha256"] = module.digest((ASSETS / "probes" / (
-            "fault.py" if probe in FAULTS else probe + ".py")).read_bytes())
+        elif probe == 'development':
+            args[args.index(str(ASSETS / 'probes/smoke.py'))] = str(ASSETS / 'development.pyz')
+        source = ASSETS / 'development.pyz' if probe == 'development' else ASSETS / 'probes' / (
+            'fault.py' if probe in FAULTS else probe + '.py')
+        report['probe_sha256'] = module.digest(source.read_bytes())
 
         def enter_worker():
             set_file(BASE / "worker", "cgroup.procs", str(os.getpid()))
@@ -320,7 +355,7 @@ def run(seed, probe):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("preflight", "smoke", "inspect", "cleanup", *sorted(FAULTS)))
+    parser.add_argument("mode", choices=("preflight", "smoke", "inspect", "development", "cleanup", *sorted(FAULTS)))
     parser.add_argument("--seed", type=int, default=1)
     args = parser.parse_args()
     try:

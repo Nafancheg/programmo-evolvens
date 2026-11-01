@@ -17,3 +17,5 @@
 
 - [ADR-009 — Область приёмки W0 / W0 Acceptance Scope](009-w0-acceptance-scope.md) — 13 сценариев прошли для фиксированного профиля / 13 scenarios passed for the fixed profile.
 - [ADR-010 — Локальная лаборатория и перенос / Local Laboratory and Portability](010-local-lab-and-portable-setup.md) — ранний дашборд по запросу пользователя; установка проверена здесь, второй ПК впереди / early dashboard at user request; local setup verified, second PC pending.
+
+- [ADR-011 — Предписанное развитие v0 / Prescribed Development v0](011-prescribed-development-v0.md) — исходная клетка → механизмы/клетка/связь → функция в W0; не обучение / initial cell → mechanisms/cell/link → function in W0; not learning.

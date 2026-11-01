@@ -4,6 +4,7 @@ import json
 import platform
 from pathlib import Path
 import time
+import zipfile
 
 ASSETS = Path('/opt/pe-world')
 RUNS = Path('/var/lib/pe-world/runs')
@@ -28,6 +29,22 @@ def applies(acceptance, current, suite_hash):
         return False
     cases = [case for case in acceptance.get('cases', {}).values() if 'controller_sha256' in case]
     return bool(cases) and all(all(case.get(key) == value for key, value in current.items()) for case in cases)
+
+
+def development_events(path):
+    events = []
+    if path.is_file() and not path.is_symlink():
+        with path.open('rb') as source:
+            lines = source.read(131072).splitlines()
+        for line in lines:
+            try:
+                event = json.loads(line)
+            except ValueError:
+                continue
+            if (isinstance(event, dict) and event.get('type') == 'heartbeat'
+                    and isinstance(event.get('development'), dict)):
+                events.append(event['development'])
+    return events[:96]
 
 
 def snapshot():
@@ -77,10 +94,28 @@ def snapshot():
         for run in runs:
             if run['id'] == active_run:
                 run['outcome'] = 'running'
+    development = None
+    candidate = next((run for run in runs if run.get('probe') == 'development'), None)
+    if candidate:
+        stream = Path(candidate['source']).with_suffix('.stdout')
+        development = {'run_id': candidate['id'], 'source': str(stream),
+                       'bundle_sha256': candidate.get('probe_sha256'), 'completed': candidate['completed'],
+                       'result': candidate.get('result'), 'events': development_events(stream)}
+        bundle = ASSETS / 'development.pyz'
+        if bundle.is_file() and not bundle.is_symlink() and bundle.stat().st_size <= 262144:
+            if hashlib.sha256(bundle.read_bytes()).hexdigest() == development['bundle_sha256']:
+                with zipfile.ZipFile(bundle) as archive:
+                    development['genome'] = json.loads(archive.read('programmo_evolvens/development_genome.json'))
+                    development['source_code'] = {}
+                    for name in ('development.py', 'runtime.py'):
+                        data = archive.read('programmo_evolvens/' + name)
+                        development['source_code'][name] = {'text': data.decode('utf-8'),
+                                                            'sha256': hashlib.sha256(data).hexdigest()}
     return {'sample_unix': time.time(), 'available': True, 'policy': policy,
             'active': active, 'active_run_id': active_run,
             'memory_bytes': number('memory.current'), 'tasks': number('pids.current'),
             'cpu_usec': int(stats.get('usage_usec', 0)), 'runs': runs,
+            'development': development,
             'acceptance': {'accepted': applicable, 'previous_report_exists': bool(acceptance),
                            'profile': (acceptance or {}).get('profile'),
                            'finished_unix': (acceptance or {}).get('finished_unix'),

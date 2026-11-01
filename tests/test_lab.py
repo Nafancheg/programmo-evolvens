@@ -1,4 +1,6 @@
 import json
+from pathlib import Path
+import tempfile
 import threading
 import unittest
 from types import SimpleNamespace
@@ -7,10 +9,19 @@ from urllib.request import Request, urlopen
 from unittest.mock import patch
 
 from programmo_evolvens.lab import LocalServer, Telemetry, make_handler
-from world.wsl2.observe import applies
+from world.wsl2.observe import applies, development_events
 
 
 class LabTelemetryTests(unittest.TestCase):
+    def test_event_reader_excludes_result_snapshot_and_incomplete_line(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'record.stdout'
+            event = {'event': 'initial', 'seq': 0}
+            path.write_text(json.dumps({'type': 'heartbeat', 'development': event})+'\n'+
+                            json.dumps({'type': 'result', 'development': {'cells': []}})+'\n'+
+                            '{"type":', encoding='utf-8')
+            self.assertEqual(development_events(path), [event])
+
     def test_old_world_report_does_not_accept_different_components(self):
         current = {'controller_sha256': 'controller', 'policy_sha256': 'policy'}
         report = {'accepted': True, 'suite_sha256': 'suite', 'cases': {'memory': dict(current)}}
@@ -79,3 +90,18 @@ class LabHttpTests(unittest.TestCase):
                 urlopen(request, timeout=2)
             self.assertEqual(error.exception.code, code)
             error.exception.close()
+
+    def test_specimen_and_sources_come_from_saved_instance(self):
+        self.telemetry.state = {'development': {'run_id': 'saved-run', 'completed': True,
+            'bundle_sha256': 'bundle', 'source': 'journal.stdout',
+            'genome': {'schema': 'development-v0'},
+            'source_code': {'development.py': {'text': '# saved source', 'sha256': 'source'}},
+            'result': {'development': {'cells': [], 'value': 'saved-result'}, 'cases': [], 'scope': 'prescribed'}}}
+        with urlopen(self.url+'/api/organism?download=1', timeout=2) as response:
+            result = json.load(response)
+            self.assertEqual(result['organism']['value'], 'saved-result')
+            self.assertIn('attachment;', response.headers['Content-Disposition'])
+        with urlopen(self.url+'/source/development.py', timeout=2) as response:
+            self.assertEqual(response.read(), b'# saved source')
+        with urlopen(self.url+'/source/genome.json', timeout=2) as response:
+            self.assertEqual(json.load(response), {'schema': 'development-v0'})

@@ -1,5 +1,6 @@
 """Local read-only laboratory dashboard. python -m programmo_evolvens.lab --open"""
 import argparse
+import hashlib
 from collections import deque
 import json
 import os
@@ -70,7 +71,24 @@ class Telemetry:
 
     def payload(self):
         with self.lock:
-            return json.dumps(self.state, ensure_ascii=False).encode('utf-8')
+            data = dict(self.state)
+        data['ui_version'] = hashlib.sha256(b''.join((STATIC / name).read_bytes() for name in
+            ('index.html', 'app.js', 'app.css', 'development_view.js'))).hexdigest()[:12]
+        return json.dumps(data, ensure_ascii=False).encode('utf-8')
+
+    def specimen(self):
+        with self.lock:
+            development = self.state.get('development') or {}
+        result = development.get('result') or {}
+        organism = result.get('development')
+        if organism is None:
+            return {'available': False, 'error': 'No saved organism instance yet'}
+        return {'available': True, 'schema': 'organism-snapshot-v0',
+                'run_id': development['run_id'], 'execution_complete': development['completed'],
+                'organism': organism, 'genome': development.get('genome'),
+                'source_code': development.get('source_code'),
+                'bundle_sha256': development['bundle_sha256'], 'source': development['source'],
+                'checks': result.get('cases'), 'scope': result.get('scope')}
 
 
 def make_handler(telemetry):
@@ -84,9 +102,26 @@ def make_handler(telemetry):
             path = urlsplit(self.path).path
             assets = {'/': ('index.html', 'text/html; charset=utf-8'),
                       '/app.js': ('app.js', 'application/javascript; charset=utf-8'),
+                      '/development_view.js': ('development_view.js', 'application/javascript; charset=utf-8'),
                       '/app.css': ('app.css', 'text/css; charset=utf-8')}
             if path == '/api/state':
                 body, mime = telemetry.payload(), 'application/json; charset=utf-8'
+            elif path == '/api/organism':
+                body = json.dumps(telemetry.specimen(), ensure_ascii=False).encode('utf-8')
+                mime = 'application/json; charset=utf-8'
+            elif path in ('/source/development.py', '/source/runtime.py', '/source/genome.json'):
+                specimen = telemetry.specimen()
+                if path == '/source/genome.json':
+                    source = specimen.get('genome')
+                    body = json.dumps(source, ensure_ascii=False, indent=2).encode('utf-8')
+                    mime = 'application/json; charset=utf-8'
+                else:
+                    source = (specimen.get('source_code') or {}).get(path.rsplit('/', 1)[-1])
+                    body = (source or {}).get('text', '').encode('utf-8')
+                    mime = 'text/plain; charset=utf-8'
+                if source is None:
+                    self.send_error(409, 'Source bundle for this instance is unavailable')
+                    return
             elif path in assets:
                 filename, mime = assets[path]
                 body = (STATIC / filename).read_bytes()
@@ -96,6 +131,8 @@ def make_handler(telemetry):
             self.send_response(200)
             self.send_header('Content-Type', mime)
             self.send_header('Content-Length', str(len(body)))
+            if path == '/api/organism' and urlsplit(self.path).query == 'download=1':
+                self.send_header('Content-Disposition', 'attachment; filename="programmo-evolvens-organism.json"')
             self.send_header('Cache-Control', 'no-store')
             self.send_header('X-Content-Type-Options', 'nosniff')
             self.send_header('Content-Security-Policy', "default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'")

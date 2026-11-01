@@ -1,6 +1,9 @@
 import sys
+import hashlib
+import json
 import tempfile
 from pathlib import Path
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -10,6 +13,53 @@ if sys.platform == "linux":
 
 @unittest.skipUnless(sys.platform == "linux", "direct cgroup backend is Linux-only")
 class DirectWorldTests(unittest.TestCase):
+    def test_development_requires_matching_accepted_runtime(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            archive = root / 'runs'
+            archive.mkdir()
+            (root/'acceptance.py').write_text('trusted fixed suite')
+            module = SimpleNamespace(trusted_tree=lambda _: True, digest=lambda data: hashlib.sha256(data).hexdigest())
+            required = {'memory', 'output', 'line', 'protocol', 'hang', 'closed-pipes', 'permissions',
+                        'inspect', 'cpu', 'deadline', 'pids', 'controller-death-and-concurrency', 'recovery'}
+            identity = {'controller_sha256': 'one'}
+            record = {'accepted': True, 'profile': 'existing-wsl-serial-single-thread-v0',
+                      'suite_sha256': module.digest((root/'acceptance.py').read_bytes()),
+                      'cases': {name: dict(identity) for name in required}}
+            path = root/'acceptance-1.json'
+            path.write_text(json.dumps(record))
+            with patch.object(direct, 'ASSETS', root), patch.object(direct, 'ARCHIVE', archive), \
+                 patch.object(direct, 'shared', return_value=module), \
+                 patch.object(direct, 'runtime_identity', return_value=identity):
+                self.assertEqual(direct.require_acceptance()['source'], str(path))
+                record['cases']['memory']['controller_sha256'] = 'older'
+                path.write_text(json.dumps(record))
+                with self.assertRaisesRegex(RuntimeError, 'current W0 acceptance required'):
+                    direct.require_acceptance()
+                path.unlink()
+                with self.assertRaisesRegex(RuntimeError, 'current W0 acceptance required'):
+                    direct.require_acceptance()
+
+    def test_rejected_admission_never_prepares_world_or_starts_candidate(self):
+        with tempfile.TemporaryDirectory() as directory:
+            module = direct.shared()
+            original = module.trusted_tree
+            module.trusted_tree = lambda _: True
+            try:
+                with patch.object(direct, 'ARCHIVE', Path(directory)), \
+                     patch.object(direct, 'preflight', return_value=[]), \
+                     patch.object(direct, 'shared', return_value=module), \
+                     patch.object(direct.pwd, 'getpwnam', return_value=None), \
+                     patch.object(direct, 'require_acceptance', side_effect=RuntimeError('not accepted')), \
+                     patch.object(direct, 'prepare_groups') as prepare, \
+                     patch.object(direct.subprocess, 'Popen') as launch:
+                    with self.assertRaisesRegex(RuntimeError, 'not accepted'):
+                        direct.run(1, 'development')
+                    prepare.assert_not_called()
+                    launch.assert_not_called()
+            finally:
+                module.trusted_tree = original
+
     def test_private_path_guard_rejects_root_and_foreign_group(self):
         for path in (direct.CGROOT, direct.CGROOT / "docker", direct.BASE / "other"):
             with self.subTest(path=path), self.assertRaises(RuntimeError):
