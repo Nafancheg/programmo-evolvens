@@ -26,6 +26,7 @@ CGROOT = Path("/sys/fs/cgroup")
 BASE = CGROOT / "pe-world-current-v0"
 ARCHIVE = Path("/var/lib/pe-world/runs")
 CONTROLLERS = {"cpu", "memory", "pids"}
+FAULTS = {"memory", "cpu", "deadline", "hang", "output", "line", "protocol", "permissions", "closed-pipes"}
 LIMITS = {
     "parent": {"memory.max": "536870912", "memory.swap.max": "0", "pids.max": "128", "cpu.max": "125000 100000"},
     "control": {"memory.max": "134217728", "memory.swap.max": "0", "pids.max": "32", "cpu.max": "25000 100000"},
@@ -67,6 +68,23 @@ def check_limits(group, values):
             raise RuntimeError(f"kernel did not enforce {group.name}/{name}={expected}")
 
 
+def origin_group():
+    value = Path("/proc/self/cgroup").read_text().strip()
+    if not value.startswith("0::/") or "\n" in value:
+        raise RuntimeError("requires the unified cgroup v2 hierarchy")
+    path = CGROOT / value[4:]
+    resolved = path.resolve(strict=True)
+    if not resolved.is_relative_to(CGROOT) or resolved.is_relative_to(BASE):
+        raise RuntimeError("invalid trusted controller origin")
+    return resolved
+
+
+def leave_control(origin):
+    # Move only our trusted PID back, never foreign processes or their quotas.
+    target = origin if origin.exists() else CGROOT
+    (target / "cgroup.procs").write_text(str(os.getpid()))
+
+
 def preflight():
     errors = []
     if sys.platform != "linux" or platform.machine() != "x86_64" or os.geteuid() != 0:
@@ -75,11 +93,13 @@ def preflight():
         errors.append("not a WSL2 kernel")
     if not (CGROOT / "cgroup.controllers").exists() or not CONTROLLERS <= set((CGROOT / "cgroup.controllers").read_text().split()):
         errors.append("cpu/memory/pids cgroup v2 controllers unavailable")
-    if Path("/proc/self/cgroup").read_text().strip() != "0::/":
-        errors.append("trusted launcher must start in the current distro's root cgroup")
+    try:
+        origin_group()
+    except (OSError, RuntimeError) as exc:
+        errors.append(str(exc))
     module = shared()
     for item in ("controller.py", "direct.py", "policy.json", "seccomp.bpf", "rootfs",
-                 "rootfs.manifest.json", "probes/smoke.py", "probes/inspect.py"):
+                 "rootfs.manifest.json", "probes/smoke.py", "probes/inspect.py", "probes/fault.py"):
         if not module.trusted_tree(ASSETS / item):
             errors.append(f"missing or writable trusted asset: {item}")
     if not module.trusted_tree(ARCHIVE):
@@ -160,7 +180,7 @@ def cleanup():
         if not foreign:
             if added:
                 (CGROOT / "cgroup.subtree_control").write_text(" ".join("-" + v for v in sorted(added)))
-            restored = True
+        restored = set((CGROOT / "cgroup.subtree_control").read_text().split()) == set(state["root_controllers_before"])
         # If Docker created a cgroup meanwhile, never disable its controllers.
         state_file.unlink()
     return {"private_cgroup_removed": not BASE.exists(), "root_controllers_restored": restored}
@@ -179,7 +199,7 @@ def run(seed, probe):
     errors = preflight()
     if errors:
         raise RuntimeError("; ".join(errors))
-    if probe not in {"smoke", "inspect"}:
+    if probe not in {"smoke", "inspect"} | FAULTS:
         raise RuntimeError("only fixed trusted probes are admitted before W0 acceptance")
     module = shared()
     policy, policy_hash = module.load_policy()
@@ -194,6 +214,7 @@ def run(seed, probe):
         if (len(list(ARCHIVE.glob("*.jsonl"))) >= policy["max_runs"] or
                 sum(p.stat().st_size for p in archive_files if p.is_file()) + 2 * policy["max_output_bytes"] > policy["max_archive_bytes"]):
             raise RuntimeError("bounded archive is full")
+        origin = origin_group()
         prepare_groups()
         run_id = uuid.uuid4().hex
         request = json.dumps({"version": 1, "seed": seed, "payload": {}}).encode() + b"\n"
@@ -205,6 +226,11 @@ def run(seed, probe):
         report = {"run_id": run_id, "backend": "direct-cgroup-v2", "probe": probe,
                   "seed": seed, "policy_version": policy["version"], "policy_sha256": policy_hash,
                   "input_sha256": module.digest(request), "started_unix": time.time(),
+                  "controller_sha256": module.digest(Path(__file__).read_bytes()),
+                  "shared_controller_sha256": module.digest((ASSETS / "controller.py").read_bytes()),
+                  "kernel_release": platform.release(),
+                  "seccomp_sha256": module.digest((ASSETS / "seccomp.bpf").read_bytes()),
+                  "rootfs_manifest_sha256": module.digest((ASSETS / "rootfs.manifest.json").read_bytes()),
                   "wsl_global_settings_changed": False, "w0_accepted": False}
         report["enforced_limits"] = {kind: {name: (group / name).read_text().strip() for name in LIMITS[kind]}
                                      for kind, group in (("parent", BASE), ("control", BASE / "control"), ("worker", BASE / "worker"))}
@@ -212,6 +238,11 @@ def run(seed, probe):
         args = module.bwrap_args(fd)
         if probe == "inspect":
             args[args.index(str(ASSETS / "probes/smoke.py"))] = str(ASSETS / "probes/inspect.py")
+        elif probe in FAULTS:
+            args[args.index(str(ASSETS / "probes/smoke.py"))] = str(ASSETS / "probes/fault.py")
+            args.append(probe)
+        report["probe_sha256"] = module.digest((ASSETS / "probes" / (
+            "fault.py" if probe in FAULTS else probe + ".py")).read_bytes())
 
         def enter_worker():
             set_file(BASE / "worker", "cgroup.procs", str(os.getpid()))
@@ -241,7 +272,8 @@ def run(seed, probe):
                     for stream, name, dest in ((process.stdout, "stdout", out), (process.stderr, "stderr", err)):
                         os.set_blocking(stream.fileno(), False)
                         selector.register(stream, selectors.EVENT_READ, (name, dest))
-                    while selector.get_map():
+                    # Closing pipes must not bypass heartbeat/runtime supervision.
+                    while selector.get_map() or process.poll() is None:
                         reason = monitor.tick(time.monotonic())
                         if reason:
                             outcome = reason
@@ -255,6 +287,7 @@ def run(seed, probe):
                             hashes[name].update(chunk)
                             piece = chunk[:max(0, policy["max_output_bytes"] - count)]
                             dest.write(piece)
+                            dest.flush()
                             count += len(piece)
                             monitor.feed(chunk, time.monotonic(), stdout=name == "stdout")
                     else:
@@ -271,22 +304,23 @@ def run(seed, probe):
                 kill_worker()
                 if process is not None:
                     process.wait(timeout=3)
-                report.update(outcome=outcome, elapsed_seconds=time.monotonic() - monitor.started,
+                report.update(outcome=outcome, returncode=process.returncode if process else None,
+                              elapsed_seconds=time.monotonic() - monitor.started,
                               observed_bytes=monitor.output_bytes, captured_bytes=count,
                               observed_sha256={name: h.hexdigest() for name, h in hashes.items()},
                               result=monitor.result, worker_stats=sample_stats(BASE / "worker"),
                               worker_populated_after=populated(BASE / "worker"),
                               hash_scope="observed bytes before stopping")
-                journal.write(json.dumps(dict(report, event="finish")) + "\n")
                 # Move only this trusted controller back for removal of its own subtree.
-                (CGROOT / "cgroup.procs").write_text(str(os.getpid()))
+                leave_control(origin)
                 report["cleanup"] = cleanup()
+                journal.write(json.dumps(dict(report, event="finish")) + "\n")
         return report
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("preflight", "smoke", "inspect", "cleanup"))
+    parser.add_argument("mode", choices=("preflight", "smoke", "inspect", "cleanup", *sorted(FAULTS)))
     parser.add_argument("--seed", type=int, default=1)
     args = parser.parse_args()
     try:

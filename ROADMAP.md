@@ -1,23 +1,23 @@
 # Roadmap / Дорожная карта
 
-**Текущий приоритет / Current priority:** сначала спроектировать и проверить ограниченный виртуальный мир W0, затем запускать развитие организма из генома до проверяемой работы органов / first engineer and verify bounded virtual world W0, then execute genome-driven development toward verifiable organ function. Пищеварение остаётся первой целевой функцией / digestion remains the first target function. [Мир RU](docs/ru/13-virtual-world.md) · [World EN](docs/en/13-virtual-world.md) · [ADR-006](adr/006-world-before-organism.md).
+**Текущий приоритет / Current priority:** W0 принят для фиксированного профиля; наблюдаем лабораторию и переходим к прослеживаемому развитию структуры из генома / W0 accepted for the fixed profile; observe the laboratory and proceed to traceable genome-driven structural development. Пищеварение остаётся первой целевой функцией / digestion remains the first target function. [Приёмка RU](docs/ru/16-w0-acceptance.md) · [Acceptance EN](docs/en/16-w0-acceptance.md) · [Лаборатория / Lab](docs/ru/17-laboratory-dashboard.md).
 
 **Два слоя / Two layers:** ядро и прикладные продукты / core and application products. Для первой рабочей модели не нужны пользовательский Excel и дашборд; проверки проводим на небольших определённых наборах входов / user Excel files and a dashboard are not prerequisites for the first working model; use small defined input sets for checks. Внешние ИИ-агенты и языковые модели не требуются для работы ядра / external AI agents and language models are not required at core runtime.
 
-**2026-11-01:** по указанию пользователя используем текущий WSL и прямой cgroup v2 без изменения init/общих настроек. [Запуск RU](docs/ru/15-current-wsl-launch.md) / [Launch EN](docs/en/15-current-wsl-launch.md): smoke и 12 проверок прошли; P2-06 выполнена, P2-09 остаётся открытой. Systemd-вариант сохранён / At user direction use existing WSL and direct cgroup v2 without init/shared-setting changes. Smoke and 12 checks passed; P2-06 complete, P2-09 remains open. Preserve the systemd alternative. Семантика мира отдельно в P2-10/11 и P4-07 / World semantics remain separate in P2-10/11 and P4-07.
+**2026-11-01:** границы W0 приняты для фиксированного последовательного профиля: [13 live-проверок / trials](docs/ru/16-w0-acceptance.md), [EN](docs/en/16-w0-acceptance.md). По прямому запросу пользователя наблюдение перенесено вперёд: [локальная лаборатория и установка / local lab and setup](docs/ru/17-laboratory-dashboard.md), [EN](docs/en/17-laboratory-dashboard.md). Развитие из генома — следующий этап; семантика мира P2-10/11 ещё впереди / genome-driven development is next; world semantics remain pending.
 
 ## Биодвижок: фазы / Bioengine Phases
 
 | Phase | RU | EN | Status | To-do |
 | --- | --- | --- | --- | --- |
-| W0 | Виртуальный мир: внешняя изоляция, ресурсы и доступы | Virtual world: external isolation, resources and permissions | In progress: design | [W0](planning/world.md) |
+| W0 | Виртуальный мир: внешняя изоляция, ресурсы и доступы | Virtual world: external isolation, resources and permissions | Boundaries accepted; semantics pending | [W0](planning/world.md) |
 | 0 | Контракты и границы первой рабочей модели | Contracts and first-model boundaries | In progress | [P0](planning/phase-0.md) |
 | 1 | Биодвижок: питание, усвоение, композиция | Bioengine: feeding, assimilation, composition | In progress | [P1](planning/phase-1.md) |
 | 2 | Клетки, телеметрия, отказоустойчивость | Cells, telemetry and resilience | In progress | [P2](planning/phase-2.md) |
 | 3 | Память, обучение и контроль качества | Memory, learning and evaluation | Planned | [P3](planning/phase-3.md) |
 | 4 | Genesis: оценка, эволюционный запрос, допуск | Genesis: assessment and approval | Planned | [P4](planning/phase-4.md) |
 | 5 | Коэволюция Genesis и проверка новых поколений | Genesis co-evolution and generation testing | Planned | [P5](planning/phase-5.md) |
-| 6 | Веб-дашборд на реальных событиях | Dashboard backed by observed events | Planned | [P6](planning/phase-6.md) |
+| 6 | Веб-дашборд на реальных событиях | Dashboard backed by observed events | In progress: user priority | [P6](planning/phase-6.md) |
 
 **RU:** Первая граница исполнения — приёмка мира P2-09 в W0. Контракты генома/клеток P0-09, P1-13/P2-01 проектируются параллельно, но развёртывание P1-17, развитие P1-18 и подбор кандидатов запускаются внутри принятого мира. Затем P1-16 проверяет пищеварительную функцию. Мир создаётся разработчиками и не эволюционирует автоматически; организм и Genesis не расширяют его доступы/квоты. Скалярный Python-прототип не является такой защитой.
 

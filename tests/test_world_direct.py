@@ -47,3 +47,32 @@ class DirectWorldTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "fixed trusted probes"):
                 direct.run(1, "/tmp/unknown.py")
             launch.assert_not_called()
+
+    def test_full_archive_refuses_before_creating_cgroups(self):
+        with tempfile.TemporaryDirectory() as directory:
+            archive = Path(directory)
+            for number in range(16):
+                (archive / f"{number}.jsonl").touch()
+            with patch.object(direct, "ARCHIVE", archive), \
+                 patch.object(direct, "preflight", return_value=[]), \
+                 patch.object(direct.pwd, "getpwnam", return_value=None), \
+                 patch.object(direct, "prepare_groups") as prepare, \
+                 patch.object(direct.subprocess, "Popen") as launch:
+                with self.assertRaisesRegex(RuntimeError, "archive is full"):
+                    direct.run(1, "smoke")
+                prepare.assert_not_called()
+                launch.assert_not_called()
+
+    def test_controller_origin_accepts_systemd_scope_and_rejects_escape(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            (root / "init.scope").mkdir()
+            for raw, valid in (("0::/init.scope", True), ("0::/../../outside", False)):
+                with self.subTest(raw=raw), patch.object(direct, "CGROOT", root), \
+                     patch.object(direct, "BASE", root / "pe-world-current-v0"), \
+                     patch.object(Path, "read_text", return_value=raw):
+                    if valid:
+                        self.assertEqual(direct.origin_group(), root / "init.scope")
+                    else:
+                        with self.assertRaises((OSError, RuntimeError)):
+                            direct.origin_group()

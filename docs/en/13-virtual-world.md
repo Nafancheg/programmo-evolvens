@@ -1,5 +1,7 @@
 # Virtual World: Organism Habitat Boundaries
 
+**Update:** [fixed-profile W0 acceptance passed](16-w0-acceptance.md); [dashboard and portability](17-laboratory-dashboard.md). Initial preparation context is preserved below.
+
 [Русский](../ru/13-virtual-world.md) · [World plan W0](../../planning/world.md) · [ADR-006](../../adr/006-world-before-organism.md)
 
 **Source:** user requirement, 2026-10-31. **Status 2026-11-01:** an [existing-WSL backend](15-current-wsl-launch.md) is installed and passed fixed probes; full W0 acceptance remains pending. The in-process scalar Python prototype itself is not an isolation boundary.

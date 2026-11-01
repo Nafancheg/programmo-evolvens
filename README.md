@@ -3,19 +3,27 @@
 **Biologically Inspired Evolutionary Software Organisms**  
 **Биологически ориентированные эволюционирующие программные организмы**
 
-**Status / Статус:** Engineering prototype; initial bounded-world probes passed / Инженерный прототип; первые пробы ограниченного мира прошли — 2026-11-01.
+**Status / Статус:** Engineering prototype; W0 accepted for fixed profile, local laboratory running / Инженерный прототип; W0 принят для фиксированного профиля, лаборатория работает — 2026-11-01.
 
 ## Текущее направление / Current Direction
 
-**RU:** Сначала создаём и проверяем ограниченный виртуальный мир W0: внешние квоты ресурсов, закрытые по умолчанию доступы и независимая остановка. Мир проектируется разработчиками и не эволюционирует вместе с организмом. Затем внутри него запускаем развитие из генома: механизмы → клетки → органы → проверяемая функция. Пищеварение и усвоение — первая целевая способность; Excel и дашборд остаются последующими задачами. Организм и Genesis не могут расширить границы мира. Внешние ИИ-агенты не требуются. Первый backend мира установлен и прошёл фиксированные пробы; полная приёмка, развитие из генома и усвоение ещё впереди.
+**RU:** Сначала создаём и проверяем ограниченный виртуальный мир W0: внешние квоты ресурсов, закрытые по умолчанию доступы и независимая остановка. Мир проектируется разработчиками и не эволюционирует вместе с организмом. Затем внутри него запускаем развитие из генома: механизмы → клетки → органы → проверяемая функция. Пищеварение и усвоение — первая целевая способность; Excel и дашборд остаются последующими задачами. Организм и Genesis не могут расширить границы мира. Внешние ИИ-агенты не требуются. Границы W0 прошли 13 сценариев приёмки; локальный дашборд показывает реальные журналы и ресурсы. Развитие из генома и усвоение ещё впереди.
 
-**EN:** First build and verify bounded virtual world W0: external resource quotas, default-deny permissions and independent stopping. Developers engineer the world; it does not co-evolve with the organism. Then run genome-driven development inside it: mechanisms → cells → organs → verifiable function. Digestion and assimilation are the first target capability; Excel and dashboards remain later tasks. Neither the organism nor Genesis can expand world boundaries. External AI agents are not required. The first world backend is installed and passed fixed probes; full acceptance, genome-driven development and assimilation remain pending.
+**EN:** First build and verify bounded virtual world W0: external resource quotas, default-deny permissions and independent stopping. Developers engineer the world; it does not co-evolve with the organism. Then run genome-driven development inside it: mechanisms → cells → organs → verifiable function. Digestion and assimilation are the first target capability; Excel and dashboards remain later tasks. Neither the organism nor Genesis can expand world boundaries. External AI agents are not required. W0 boundaries passed 13 acceptance scenarios; a local dashboard displays actual logs and resources. Genome-driven development and assimilation remain pending.
 
 [Целостная модель RU](docs/ru/11-bioengine-and-applications.md) · [Complete model EN](docs/en/11-bioengine-and-applications.md) · [План ядра / Core plan](ROADMAP.md) · [Прикладная очередь / Application backlog](planning/applications.md)
 
 [Виртуальный мир RU](docs/ru/13-virtual-world.md) · [Virtual world EN](docs/en/13-virtual-world.md) · [W0](planning/world.md)
 
-**2026-11-01 — W0:** [запущены пробы в текущем WSL (RU)](docs/ru/15-current-wsl-launch.md) / [probes launched in existing WSL (EN)](docs/en/15-current-wsl-launch.md). Smoke и 12 проверок границ прошли; 38 модульных тестов прошли в Linux / Smoke and 12 boundary checks passed; 38 Linux unit tests passed. Общие настройки, init и Docker сохранены. Полная приёмка W0 впереди; развитие из генома не реализовано / Shared settings, init and Docker preserved. Full W0 acceptance remains pending; genome-driven development is not implemented.
+**2026-11-01 — W0 + Lab:** [приёмка RU](docs/ru/16-w0-acceptance.md) / [acceptance EN](docs/en/16-w0-acceptance.md); 46 Linux tests, 39 Windows passed + 7 Linux-only skipped. [Установка и дашборд RU](docs/ru/17-laboratory-dashboard.md) / [setup and dashboard EN](docs/en/17-laboratory-dashboard.md). WSL/Docker settings unchanged; no developing organisms yet / Настройки сохранены; развивающиеся организмы пока не запускались.
+
+```powershell
+.\scripts\setup-lab.ps1 -InstallDependencies
+.\world\wsl2\config\run-acceptance.ps1
+.\scripts\start-lab.ps1
+```
+
+Requires Windows Python 3.11+ and WSL2 Ubuntu/Debian / Нужны Python 3.11+ для Windows и WSL2 Ubuntu/Debian.
 
 ## Первый прототип / First Prototype
 
@@ -68,6 +76,8 @@ Genesis may also evolve, subject to external competence validation. The primary 
 | Virtual World and Limits / Виртуальный мир и ограничения | [EN](docs/en/13-virtual-world.md) | [RU](docs/ru/13-virtual-world.md) |
 | WSL2 Laboratory Backend / Лабораторный backend WSL2 | [EN](docs/en/14-wsl2-backend.md) | [RU](docs/ru/14-wsl2-backend.md) |
 | Existing WSL Launch and Evidence / Запуск в текущем WSL и результаты | [EN](docs/en/15-current-wsl-launch.md) | [RU](docs/ru/15-current-wsl-launch.md) |
+| W0 Acceptance / Приёмка W0 | [EN](docs/en/16-w0-acceptance.md) | [RU](docs/ru/16-w0-acceptance.md) |
+| Laboratory and Installation / Лаборатория и установка | [EN](docs/en/17-laboratory-dashboard.md) | [RU](docs/ru/17-laboratory-dashboard.md) |
 
 ## Research / Исследования
 

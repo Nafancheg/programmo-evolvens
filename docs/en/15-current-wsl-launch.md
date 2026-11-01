@@ -1,5 +1,7 @@
 # First Launch in the Existing WSL
 
+**Update:** [fixed-profile W0 acceptance passed](16-w0-acceptance.md); [dashboard and portability](17-laboratory-dashboard.md). Initial preparation context is preserved below.
+
 [Русский](../ru/15-current-wsl-launch.md) · [Evidence](../../world/wsl2/evidence/current-wsl-2026-11-01.json) · [W0 plan](../../planning/world.md) · [ADR-008](../../adr/008-current-wsl-direct-cgroups.md)
 
 **Date:** 2026-11-01. At the user's direction, use existing Ubuntu-26.04 without changing its settings. No distro was created; `.wslconfig`, `/etc/wsl.conf`, PID 1 and Docker settings were unchanged. `smoke` and `inspect` succeeded; this is a first probe launch, not admission of arbitrary or developing organisms.

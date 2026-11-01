@@ -1,0 +1,979 @@
+{
+  "acceptance": {
+    "profile": "existing-wsl-serial-single-thread-v0",
+    "started_unix": 1793549752.5551665,
+    "before": {
+      "wsl_conf_sha256": "1bd489a49ade547d86ebb14809a2041363db59b114036d21ec2f4f5b2366a710",
+      "pid1": "init(Ubuntu-26.",
+      "root_controllers": [],
+      "docker_pids": [
+        "26"
+      ],
+      "private_cgroup_absent": true
+    },
+    "cases": {
+      "memory": {
+        "run_id": "9d36754c77894451a23a1e68253e5dba",
+        "backend": "direct-cgroup-v2",
+        "probe": "memory",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549752.6191087,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+        "outcome": "probe_failed",
+        "returncode": -9,
+        "elapsed_seconds": 0.2062170290009817,
+        "observed_bytes": 65,
+        "captured_bytes": 65,
+        "observed_sha256": {
+          "stdout": "06f663f4638590097402fc1d8c0b03f1f0f9173708ca229d2b97a76661ceb483",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": null,
+        "worker_stats": {
+          "memory.peak": "268435456",
+          "memory.events": "low 0\nhigh 0\nmax 24\noom 1\noom_kill 4\noom_group_kill 1",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 206052\nuser_usec 52523\nsystem_usec 153529\nnr_periods 2\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "output": {
+        "run_id": "f7d84c5149764229b2930de5d53acc80",
+        "backend": "direct-cgroup-v2",
+        "probe": "output",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549752.9150932,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+        "outcome": "output_limit",
+        "returncode": -9,
+        "elapsed_seconds": 0.07793703599963919,
+        "observed_bytes": 1048641,
+        "captured_bytes": 1048576,
+        "observed_sha256": {
+          "stdout": "e22b70cf62359749223169555fac21ddaa278cc4a66fab9bb39f3d130f4f957b",
+          "stderr": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b"
+        },
+        "result": null,
+        "worker_stats": {
+          "memory.peak": "9498624",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 54415\nuser_usec 46642\nsystem_usec 7773\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "line": {
+        "run_id": "033f9cae5a2649d18bc8486ac81ecc9c",
+        "backend": "direct-cgroup-v2",
+        "probe": "line",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549753.123118,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+        "outcome": "line_limit",
+        "returncode": -9,
+        "elapsed_seconds": 0.07352511299905018,
+        "observed_bytes": 20064,
+        "captured_bytes": 20064,
+        "observed_sha256": {
+          "stdout": "69d2b88e93dafbedfc979e7848a7fc7086e230caac5cf60466e8e6438642cbb2",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": null,
+        "worker_stats": {
+          "memory.peak": "9506816",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 53138\nuser_usec 45546\nsystem_usec 7591\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "protocol": {
+        "run_id": "192919421ddd4f6dbde678df2ab483e0",
+        "backend": "direct-cgroup-v2",
+        "probe": "protocol",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549753.3152237,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+        "outcome": "protocol_error",
+        "returncode": -9,
+        "elapsed_seconds": 0.0745542229997227,
+        "observed_bytes": 102,
+        "captured_bytes": 102,
+        "observed_sha256": {
+          "stdout": "a35f84cbc13f35c9a4943f5036c44c893116a0ef98a433a9faf052f504539761",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": null,
+        "worker_stats": {
+          "memory.peak": "9764864",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 54125\nuser_usec 45798\nsystem_usec 8327\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "hang": {
+        "run_id": "45af78cf6aeb4849bc0931ec72c746b3",
+        "backend": "direct-cgroup-v2",
+        "probe": "hang",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549753.5191293,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+        "outcome": "heartbeat_timeout",
+        "returncode": -9,
+        "elapsed_seconds": 5.08739407900066,
+        "observed_bytes": 63,
+        "captured_bytes": 63,
+        "observed_sha256": {
+          "stdout": "63fe03e82d1ec766341ad6c3aacebfae910dba357ac837e9a644b58b3afd2677",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": null,
+        "worker_stats": {
+          "memory.peak": "9494528",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 55978\nuser_usec 43983\nsystem_usec 11995\nnr_periods 3\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "closed-pipes": {
+        "run_id": "a65e4dc30d2e46b2b29e5f7ae687b602",
+        "backend": "direct-cgroup-v2",
+        "probe": "closed-pipes",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549758.7311316,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+        "outcome": "heartbeat_timeout",
+        "returncode": -9,
+        "elapsed_seconds": 5.084913750000851,
+        "observed_bytes": 65,
+        "captured_bytes": 65,
+        "observed_sha256": {
+          "stdout": "621663938210e8e4bfc41f1be8e2c32cf39a669d9f431fde0f109d396985cbf3",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": null,
+        "worker_stats": {
+          "memory.peak": "9498624",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 55103\nuser_usec 43295\nsystem_usec 11807\nnr_periods 3\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "permissions": {
+        "run_id": "f57198715662464ea669d0aac832b1ef",
+        "backend": "direct-cgroup-v2",
+        "probe": "permissions",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549763.9430816,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+        "outcome": "passed",
+        "returncode": 0,
+        "elapsed_seconds": 0.08520489900183748,
+        "observed_bytes": 397,
+        "captured_bytes": 397,
+        "observed_sha256": {
+          "stdout": "a513c50203b39b4b492eb5bdf9d1f430c0f5a2c6dcfeac6b9eda9519ca34154b",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": {
+          "type": "result",
+          "seed": 1,
+          "passed": true,
+          "checks": {
+            "fork_denied": true,
+            "clone3_denied": true,
+            "unshare_denied": true,
+            "mount_denied": true,
+            "ptrace_denied": true,
+            "bpf_denied": true,
+            "socket_denied": true,
+            "no_new_privs": true,
+            "no_capabilities": true,
+            "nofile_enforced": true,
+            "nofile_policy": true,
+            "tmpfs_enforced": true
+          }
+        },
+        "worker_stats": {
+          "memory.peak": "28299264",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 80432\nuser_usec 64346\nsystem_usec 16086\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "inspect": {
+        "run_id": "69a45b9ec02446c391e91a81e8535ac5",
+        "backend": "direct-cgroup-v2",
+        "probe": "inspect",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549764.1591535,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "d86b8959d1dfd89a1b222b88c84a2d03af0504d961c99112e3540b7a321d3b3c",
+        "outcome": "passed",
+        "returncode": 0,
+        "elapsed_seconds": 0.06292407799992361,
+        "observed_bytes": 407,
+        "captured_bytes": 407,
+        "observed_sha256": {
+          "stdout": "c36aa535249acd7e32a05c0461e35dcae9a64e827e6a624ca87d4fb8f2d6525c",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": {
+          "type": "result",
+          "seed": 1,
+          "passed": true,
+          "checks": {
+            "uid": true,
+            "gid": true,
+            "windows_hidden": true,
+            "home_hidden": true,
+            "control_hidden": true,
+            "docker_hidden": true,
+            "socket_denied": true,
+            "root_write_denied": true,
+            "root_mounted_read_only": true,
+            "network_namespace_private": true,
+            "private_work": true,
+            "environment_clean": true
+          }
+        },
+        "worker_stats": {
+          "memory.peak": "9490432",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 59912\nuser_usec 55633\nsystem_usec 4279\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "cpu": {
+        "run_id": "63242e692cfe477f8647e9cf992aaa92",
+        "backend": "direct-cgroup-v2",
+        "probe": "cpu",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549764.3591444,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+        "outcome": "probe_failed",
+        "returncode": 137,
+        "elapsed_seconds": 70.00769424399914,
+        "observed_bytes": 9224,
+        "captured_bytes": 9224,
+        "observed_sha256": {
+          "stdout": "b334028328a6786ddbdf69ddbe95454e5c33c5ea81cede04408318291d8ec624",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": null,
+        "worker_stats": {
+          "memory.peak": "9572352",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 69993250\nuser_usec 69989243\nsystem_usec 4006\nnr_periods 700\nnr_throttled 17\nthrottled_usec 9729\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "deadline": {
+        "run_id": "65068ee096374078812d01b1fce7dbfb",
+        "backend": "direct-cgroup-v2",
+        "probe": "deadline",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549834.5271358,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+        "outcome": "runtime_limit",
+        "returncode": -9,
+        "elapsed_seconds": 70.04342030399857,
+        "observed_bytes": 9223,
+        "captured_bytes": 9223,
+        "observed_sha256": {
+          "stdout": "c203aea7821c709389868c54ae24f8ab93d8a0f6bf4e9e52ebf13ce56e6a06a1",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": null,
+        "worker_stats": {
+          "memory.peak": "9494528",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 111501\nuser_usec 88432\nsystem_usec 23069\nnr_periods 114\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "pids": {
+        "helper": {
+          "denied": true,
+          "children": 63
+        },
+        "returncode": 0,
+        "worker_stats": {
+          "memory.peak": "49778688",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "64",
+          "pids.events": "max 1",
+          "cpu.stat": "usage_usec 69340\nuser_usec 19112\nsystem_usec 50227\nnr_periods 2\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "scope": "trusted kernel quota stress; workload seccomp unchanged",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "controller-death-and-concurrency": {
+        "controller_returncode": -9,
+        "worker_empty_after_seconds": 0.02093776100082323,
+        "concurrent_launch_rejected": true,
+        "worker_stats": {
+          "memory.peak": "9490432",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 59070\nuser_usec 46412\nsystem_usec 12657\nnr_periods 2\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "interrupted_journals": [
+          "34ecf8524b0d4572a589f7248911bacf.jsonl"
+        ],
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      },
+      "recovery": {
+        "run_id": "e6fa2fbd731f4f918cbb76470a9ef0c5",
+        "backend": "direct-cgroup-v2",
+        "probe": "smoke",
+        "seed": 1,
+        "policy_version": "wsl2-probe-v0.2",
+        "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+        "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+        "started_unix": 1793549908.0151362,
+        "controller_sha256": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+        "shared_controller_sha256": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+        "kernel_release": "6.6.87.2-microsoft-standard-WSL2",
+        "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+        "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+        "wsl_global_settings_changed": false,
+        "w0_accepted": false,
+        "enforced_limits": {
+          "parent": {
+            "memory.max": "536870912",
+            "memory.swap.max": "0",
+            "pids.max": "128",
+            "cpu.max": "125000 100000"
+          },
+          "control": {
+            "memory.max": "134217728",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "cpu.max": "25000 100000"
+          },
+          "worker": {
+            "memory.max": "268435456",
+            "memory.swap.max": "0",
+            "pids.max": "64",
+            "cpu.max": "100000 100000"
+          }
+        },
+        "probe_sha256": "4eb733ce64a8b7cd9387d247415e25ecb9de185893d439fd73fdde127339a5df",
+        "outcome": "passed",
+        "returncode": 0,
+        "elapsed_seconds": 0.047950591000699205,
+        "observed_bytes": 143,
+        "captured_bytes": 143,
+        "observed_sha256": {
+          "stdout": "2d682bcd83116272dea40e806a3fa659ca3d26d75be61d18ac0e967823629870",
+          "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "result": {
+          "type": "result",
+          "seed": 1,
+          "uid": 65534,
+          "message": "trusted smoke probe"
+        },
+        "worker_stats": {
+          "memory.peak": "9236480",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+          "pids.peak": "3",
+          "pids.events": "max 0",
+          "cpu.stat": "usage_usec 46975\nuser_usec 39146\nsystem_usec 7829\nnr_periods 1\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+        },
+        "worker_populated_after": false,
+        "hash_scope": "observed bytes before stopping",
+        "cleanup": {
+          "private_cgroup_removed": true,
+          "root_controllers_restored": true
+        }
+      }
+    },
+    "accepted": true,
+    "suite_sha256": "75746a2a6801ee26cd134d824df709878b1b08cbcc905498cb2fefe0a1180fc7",
+    "after": {
+      "wsl_conf_sha256": "1bd489a49ade547d86ebb14809a2041363db59b114036d21ec2f4f5b2366a710",
+      "pid1": "init(Ubuntu-26.",
+      "root_controllers": [],
+      "docker_pids": [
+        "26"
+      ],
+      "private_cgroup_absent": true
+    },
+    "finished_unix": 1793549908.1540148
+  },
+  "supplemental_permissions": {
+    "run_id": "f7c10ab718004cb29dc395fff060acf2",
+    "backend": "direct-cgroup-v2",
+    "probe": "permissions",
+    "seed": 1,
+    "policy_version": "wsl2-probe-v0.2",
+    "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+    "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+    "started_unix": 1793549183.9272451,
+    "controller_sha256": "ad7309c6f068436e329778fe2d40707207523728afae121e2ad1284d573d7574",
+    "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+    "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+    "wsl_global_settings_changed": false,
+    "w0_accepted": false,
+    "enforced_limits": {
+      "parent": {
+        "memory.max": "536870912",
+        "memory.swap.max": "0",
+        "pids.max": "128",
+        "cpu.max": "125000 100000"
+      },
+      "control": {
+        "memory.max": "134217728",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "cpu.max": "25000 100000"
+      },
+      "worker": {
+        "memory.max": "268435456",
+        "memory.swap.max": "0",
+        "pids.max": "64",
+        "cpu.max": "100000 100000"
+      }
+    },
+    "probe_sha256": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+    "outcome": "passed",
+    "returncode": 0,
+    "elapsed_seconds": 0.16499856100017496,
+    "observed_bytes": 398,
+    "captured_bytes": 398,
+    "observed_sha256": {
+      "stdout": "43cc0954744e8ec19829470d280ed1cc2bd27bb7ac2d4f3c75b8972ab177f6e1",
+      "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "result": {
+      "type": "result",
+      "seed": 1,
+      "passed": true,
+      "checks": {
+        "fork_denied": true,
+        "clone3_denied": true,
+        "unshare_denied": true,
+        "mount_denied": true,
+        "ptrace_denied": true,
+        "bpf_denied": true,
+        "socket_denied": true,
+        "no_new_privs": true,
+        "no_capabilities": true,
+        "nofile_enforced": true,
+        "nofile_policy": true,
+        "tmpfs_enforced": true
+      }
+    },
+    "worker_stats": {
+      "memory.peak": "37945344",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "pids.peak": "3",
+      "pids.events": "max 0",
+      "cpu.stat": "usage_usec 95389\nuser_usec 67125\nsystem_usec 28263\nnr_periods 2\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0"
+    },
+    "worker_populated_after": false,
+    "hash_scope": "observed bytes before stopping",
+    "cleanup": {
+      "private_cgroup_removed": true,
+      "root_controllers_restored": true
+    },
+    "event": "finish"
+  },
+  "prior_attempt": {
+    "path": "/var/lib/pe-world/acceptance-1793477542.json",
+    "sha256": "293683a07f341795673168bccc2d07cb635b668fe37c0c25765e01078616507b",
+    "accepted": false,
+    "error": "RuntimeError: cpu: expected runtime_limit, got probe_failed",
+    "cpu": {
+      "run_id": "0d755e0ebdf14372bab94109fc409a59",
+      "backend": "direct-cgroup-v2",
+      "probe": "cpu",
+      "seed": 1,
+      "policy_version": "wsl2-probe-v0.2",
+      "policy_sha256": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+      "input_sha256": "5e5c03df5174e290c769a27417e51474488836e20c8df0ffcca8efe3bdfb5db0",
+      "started_unix": 1793477554.683755,
+      "controller_sha256": "24b2c1767336d4bc182ce736e2dab613b74fccdcd8195f5b7e94ece6f682ae44",
+      "seccomp_sha256": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+      "rootfs_manifest_sha256": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db",
+      "wsl_global_settings_changed": false,
+      "w0_accepted": false,
+      "enforced_limits": {
+        "parent": {
+          "memory.max": "536870912",
+          "memory.swap.max": "0",
+          "pids.max": "128",
+          "cpu.max": "125000 100000"
+        },
+        "control": {
+          "memory.max": "134217728",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "cpu.max": "25000 100000"
+        },
+        "worker": {
+          "memory.max": "268435456",
+          "memory.swap.max": "0",
+          "pids.max": "64",
+          "cpu.max": "100000 100000"
+        }
+      },
+      "probe_sha256": "5ff984e2a9cf3ac40c81cb182d2da409e6e065ac672979f778e133bbc99592df",
+      "outcome": "probe_failed",
+      "returncode": 137,
+      "elapsed_seconds": 70.00225304599735,
+      "observed_bytes": 9230,
+      "captured_bytes": 9230,
+      "observed_sha256": {
+        "stdout": "f44aeefe186cde1dbdda58a61bfdc95af60522af6bc2940ffa5bf98408eeee4d",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": null,
+      "worker_stats": {
+        "memory.peak": "9252864",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "pids.peak": "3",
+        "pids.events": "max 0",
+        "cpu.stat": "usage_usec 69974476\nuser_usec 69962481\nsystem_usec 11995\nnr_periods 700\nnr_throttled 11\nthrottled_usec 26357\nnr_bursts 0\nburst_usec 0"
+      },
+      "worker_populated_after": false,
+      "hash_scope": "observed bytes before stopping",
+      "cleanup": {
+        "private_cgroup_removed": true,
+        "root_controllers_restored": true
+      }
+    }
+  },
+  "installed_sha256": {
+    "direct.py": "d11f6e8b6e41653a3b8f153fc59cc2217c2b46efa3d899f840b951707a0dbb5f",
+    "controller.py": "0e4878af794f0c71e42ff03d6028d03fe880f3ce38fd84dba4eb9f2e72c18894",
+    "acceptance.py": "75746a2a6801ee26cd134d824df709878b1b08cbcc905498cb2fefe0a1180fc7",
+    "observe.py": "b1a1f3aef8a05a4e7602cdb1150a9579f2753b7e18fede98fc5ec3b9929e6373",
+    "probes/fault.py": "75b0e81c0919f4823bd5ca7163084e36cfd0e207c28be99c0f2843e4f47f803d",
+    "probes/smoke.py": "4eb733ce64a8b7cd9387d247415e25ecb9de185893d439fd73fdde127339a5df",
+    "probes/inspect.py": "d86b8959d1dfd89a1b222b88c84a2d03af0504d961c99112e3540b7a321d3b3c",
+    "policy.json": "1ce213df78bf271af8f39425add0a5ec5ac0aa961594f02317eb20626deadece",
+    "seccomp.bpf": "b9c057a39e0530d1e207bbb07837db73619bb8d41a95dc63261baa27337db765",
+    "rootfs.manifest.json": "9bc21baa9e66ab950ce895606f9980d11af18d4ca7fa25015006e8ffa564f3db"
+  },
+  "verification_now": {
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "private_cgroup_absent": true,
+    "root_controllers": [],
+    "wsl_conf_sha256": "1bd489a49ade547d86ebb14809a2041363db59b114036d21ec2f4f5b2366a710",
+    "pid1": "init(Ubuntu-26.",
+    "docker_pids": [
+      "26"
+    ],
+    "active_run_count": 12,
+    "retained_archive_bytes": 4505335
+  },
+  "date": "2026-11-01",
+  "wslconfig_sha256": "675c27c3778327360ec88af098f4868382dab1862b99a691daf3e98bf23ab0a6",
+  "wslconfig_unchanged": true,
+  "tests": {
+    "linux_passed": 46,
+    "windows_passed": 39,
+    "windows_linux_only_skipped": 7
+  },
+  "supplemental_note": "Earlier permissions check retained for audit; the final full suite rechecked the same assertions on the final runtime.",
+  "earlier_accepted_attempt": {
+    "source": "/var/lib/pe-world/acceptance-1793477653.json",
+    "accepted": true
+  },
+  "dashboard_verification": {
+    "available": true,
+    "profile_applicable": true,
+    "run_count": 38,
+    "ui_language_switch": true,
+    "ui_search": true,
+    "ui_raw_event": true,
+    "ui_live_probe_seen": "867dd85db7e54380",
+    "live_memory_mib_seen": 17.9,
+    "live_tasks_seen": 3,
+    "setup_update_and_check_only_passed": true,
+    "clean_second_pc_not_tested": true,
+    "live_probe_run_id": "867dd85db7e543808ce4750c2a2415cc",
+    "final_current_profile_applicable": true
+  },
+  "first_full_suite_host_free_before_gib_rounded": 15.58,
+  "host_reserve_during_final_suite": {
+    "measured_during": "final acceptance deadline trial",
+    "free_bytes": 17165320192
+  }
+}

@@ -14,3 +14,6 @@
 - [ADR-006 — Сначала ограниченный мир / Bounded World First](006-world-before-organism.md) — принято; внешняя защита и приёмка W0 предшествуют запуску развивающегося организма / accepted; external protection and W0 acceptance precede developing-organism execution.
 - [ADR-007 — Первый backend W0 на WSL2 / First WSL2 W0 Backend](007-wsl2-laboratory-backend.md) — выбран для подготовки; установка и приёмка впереди / selected for preparation; installation/acceptance pending.
 - [ADR-008 — Текущий WSL без изменения настроек / Existing WSL Without Configuration Changes](008-current-wsl-direct-cgroups.md) — реализован первый доверенный запуск через прямой cgroup v2; полная приёмка впереди / initial trusted launch implemented using direct cgroup v2; full acceptance pending.
+
+- [ADR-009 — Область приёмки W0 / W0 Acceptance Scope](009-w0-acceptance-scope.md) — 13 сценариев прошли для фиксированного профиля / 13 scenarios passed for the fixed profile.
+- [ADR-010 — Локальная лаборатория и перенос / Local Laboratory and Portability](010-local-lab-and-portable-setup.md) — ранний дашборд по запросу пользователя; установка проверена здесь, второй ПК впереди / early dashboard at user request; local setup verified, second PC pending.
